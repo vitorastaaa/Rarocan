@@ -1,0 +1,19 @@
+{
+  "name": "RARO CAM",
+  "short_name": "RARO CAM",
+  "description": "Grava\u00e7\u00e3o de v\u00eddeo profissional com comandos de voz",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#0a84ff",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iaWNvbkdyYWRpZW50IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzBhODRmZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3R5bGU9InN0b3AtY29sb3I6IzVlNWNlNiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNiZjVhZjIiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJpY29uR2xvdyI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjQiIHJlc3VsdD0iY29sb3JlZEJsdXIiLz4KICAgICAgPGZlTWVyZ2U+CiAgICAgICAgPGZlTWVyZ2VOb2RlIGluPSJjb2xvcmVkQmx1ciIvPgogICAgICAgIDxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPgogICAgICA8L2ZlTWVyZ2U+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPCEtLSBGdW5kbyBhcnJlZG9uZGFkbyAtLT4KICA8cmVjdCB4PSIzMiIgeT0iMTEyIiB3aWR0aD0iNDQ4IiBoZWlnaHQ9IjI4OCIgcng9IjQ4IiBmaWxsPSJ1cmwoI2ljb25HcmFkaWVudCkiIGZpbHRlcj0idXJsKCNpY29uR2xvdykiLz4KICA8IS0tIExlbnRlIGRhIGPDom1lcmEgLS0+CiAgPGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiByPSI4MCIgZmlsbD0iIzFjMWMxZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjgiLz4KICA8Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNTYiIHI9IjU2IiBmaWxsPSIjMmMyYzJlIiBzdHJva2U9IiMwYTg0ZmYiIHN0cm9rZS13aWR0aD0iNCIvPgogIDxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMzIiIGZpbGw9IiMwYTg0ZmYiIG9wYWNpdHk9IjAuNiIvPgogIDwhLS0gRmxhc2ggLS0+CiAgPGNpcmNsZSBjeD0iNDAwIiBjeT0iMTYwIiByPSIxNiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC45Ii8+CiAgPCEtLSBCb3TDo28gZGUgZ3JhdmHDp8OjbyAtLT4KICA8cmVjdCB4PSIyMDAiIHk9IjgwIiB3aWR0aD0iMTEyIiBoZWlnaHQ9IjMyIiByeD0iMTYiIGZpbGw9InVybCgjaWNvbkdyYWRpZW50KSIvPgo8L3N2Zz4=",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
