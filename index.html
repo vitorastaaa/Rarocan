@@ -487,47 +487,31 @@
             100% { box-shadow: 0 0 0 0 rgba(255,59,48,0); }
         }
 
-        .settings-btn {
-  width: 45px;
-  height: 45px;
+.settings-btn {
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1.5px solid rgba(10, 132, 255, 0.4);
+  background: transparent;
+  border: 2px solid rgba(10, 132, 255, 0.6);
   box-shadow: 
-    0 0 15px rgba(10, 132, 255, 0.3),
-    0 0 30px rgba(10, 132, 255, 0.15),
-    inset 0 0 20px rgba(255, 255, 255, 0.05);
+    0 0 10px rgba(10, 132, 255, 0.5),
+    0 0 20px rgba(10, 132, 255, 0.3),
+    0 0 30px rgba(10, 132, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.settings-btn::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.1) 50%,
-    transparent 70%
-  );
-  transform: rotate(45deg);
-  transition: all 0.5s;
-  opacity: 0;
 }
 
 .settings-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(10, 132, 255, 0.9);
+  box-shadow: 
+    0 0 15px rgba(10, 132, 255, 0.8),
+    0 0 30px rgba(10, 132, 255, 0.5),
+    0 0 45px rgba(10, 132, 255, 0.3);
+  transform: scale(1.05);
+};
   border-color: rgba(10, 132, 255, 0.6);
   box-shadow: 
     0 0 20px rgba(10, 132, 255, 0.5),
