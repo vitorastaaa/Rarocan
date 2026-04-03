@@ -526,8 +526,73 @@
   box-shadow: 
     0 0 10px rgba(10, 132, 255, 0.6),
     0 0 20px rgba(10, 132, 255, 0.4),
-    0 0 30px rgba(10, 132, 255, 0.2),
-    inset 0 0 10px rgba(10, 132, 255, 0.1);
+    0 0 30px rgba(10, 132, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.gear {
+  width: 36px;
+  height: 36px;
+  position: relative;
+  animation: spin 6s linear infinite;
+}
+
+.gear-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 3px solid #0a84ff;
+  box-shadow: 
+    0 0 10px #0a84ff,
+    inset 0 0 5px rgba(10, 132, 255, 0.3);
+  background: transparent;
+  z-index: 2;
+}
+
+.gear-teeth {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px dashed #0a84ff;
+  box-shadow: 0 0 15px #0a84ff;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.settings-btn:hover {
+  border-color: rgba(10, 132, 255, 1);
+  box-shadow: 
+    0 0 15px rgba(10, 132, 255, 0.9),
+    0 0 30px rgba(10, 132, 255, 0.6),
+    0 0 45px rgba(10, 132, 255, 0.3);
+}
+
+.settings-btn:hover .gear {
+  animation-duration: 3s;
+}
+
+.settings-btn:hover .gear-center,
+.settings-btn:hover .gear-teeth {
+  border-color: #5ac8fa;
+  box-shadow: 
+    0 0 15px #5ac8fa,
+    0 0 30px #5ac8fa;
+}
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1062,9 +1127,13 @@
                     <button class="record-btn" id="recordBtn"></button>
                 </div>
 
-                <button class="settings-btn" id="settingsBtn">
-                    <img src="settings-icon.jpg.jpg" alt="Configurações" style="width: 24px; height: 24px; filter: invert(1);">
-                </button>
+           <button class="settings-btn" id="settingsBtn">
+  <div class="gear">
+    <div class="gear-center"></div>
+    <div class="gear-teeth"></div>
+  </div>
+</button>     
+                   
             </div>
         </div>
 
