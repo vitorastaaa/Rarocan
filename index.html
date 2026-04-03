@@ -517,10 +517,55 @@
   filter: drop-shadow(0 0 5px rgba(10, 132, 255, 0.8));
 }
 
-@keyframes spin {
+.settings-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid rgba(10, 132, 255, 0.8);
+  box-shadow: 
+    0 0 10px rgba(10, 132, 255, 0.6),
+    0 0 20px rgba(10, 132, 255, 0.4),
+    0 0 30px rgba(10, 132, 255, 0.2),
+    inset 0 0 10px rgba(10, 132, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  animation: spin 6s linear infinite;
+}
+
+.settings-btn::before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid #0a84ff;
+  background: transparent;
+  box-shadow: 
+    0 0 10px #0a84ff,
+    inset 0 0 5px rgba(10, 132, 255, 0.3);
+  z-index: 2;
+}
+
+.settings-btn::after {
+  content: '';
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px dashed #0a84ff;
+  box-shadow: 0 0 15px #0a84ff;
+  @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+}
+
+
 
 .settings-btn:hover {
   border-color: rgba(10, 132, 255, 1);
@@ -529,21 +574,21 @@
     0 0 30px rgba(10, 132, 255, 0.6),
     0 0 45px rgba(10, 132, 255, 0.3),
     inset 0 0 15px rgba(10, 132, 255, 0.2);
-  animation-duration: 3s;
-}
-
-.settings-btn:hover::before {
-  color: #5ac8fa;
-  text-shadow: 
+  .settings-btn:hover::before,
+.settings-btn:hover::after {
+  border-color: #5ac8fa;
+  box-shadow: 
     0 0 15px #5ac8fa,
-    0 0 30px #5ac8fa,
-    0 0 45px #5ac8fa;
-}
+    0 0 30px #5ac8fa;
 }
 
-.settings-btn:hover::before {
-  opacity: 1;
-  transform: rotate(45deg) translate(50%, 50%);
+.settings-btn:hover::before,
+.settings-btn:hover::after {
+  border-color: #5ac8fa;
+  box-shadow: 
+    0 0 15px #5ac8fa,
+    0 0 30px #5ac8fa;
+}
 }
 
 .settings-btn:active {
