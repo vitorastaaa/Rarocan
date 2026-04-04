@@ -1087,10 +1087,82 @@
                     <button class="record-btn" id="recordBtn"></button>
                 </div>
 
-           <button class="settings-btn" id="settingsBtn">
-    <svg class="gear-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97 0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.5.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.63c-.04.34-.07.67-.07 1 0 .33.03.66.07 1l-2.11 1.63c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.63z"/>
-  </svg>
+           <svg class="gear-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradiente principal azul 3D -->
+    <linearGradient id="gearGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4da6ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0a84ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0051d5;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradiente de destaque (brilho superior) -->
+    <linearGradient id="highlightGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#80c5ff;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#0a84ff;stop-opacity:0" />
+    </linearGradient>
+    
+    <!-- Sombra interna -->
+    <radialGradient id="innerShadow" cx="50%" cy="50%" r="50%">
+      <stop offset="70%" style="stop-color:#003d99;stop-opacity:0" />
+      <stop offset="100%" style="stop-color:#003d99;stop-opacity:0.4" />
+    </radialGradient>
+    
+    <!-- GLOW CIANO TRANSLÚCIDO -->
+    <radialGradient id="cyanGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:0.3" />
+      <stop offset="50%" style="stop-color:#00d4ff;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- Blur suave para o glow -->
+    <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" />
+    </filter>
+  </defs>
+  
+  <!-- CAMADA 1: Glow ciano translúcido com pulsação -->
+  <circle cx="50" cy="46" r="48" fill="url(#cyanGlow)" filter="url(#softBlur)" opacity="0.3">
+    <animate attributeName="opacity" values="0.2;0.35;0.2" dur="3s" repeatCount="indefinite" />
+    <animate attributeName="r" values="46;50;46" dur="3s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- CAMADA 2: Engrenagem 3D nítida (12 dentes) -->
+  <path d="M50 10 
+           L54 10 L56 4 L60 4 L62 10 
+           L66 11 L70 6 L74 8 L72 14 
+           L76 17 L82 14 L85 18 L80 23 
+           L82 27 L88 28 L89 32 L83 35 
+           L83 40 L90 42 L90 46 L83 48 
+           L82 53 L88 56 L85 60 L80 57 
+           L76 61 L82 66 L78 70 L72 66 
+           L68 69 L72 75 L68 78 L62 73 
+           L58 76 L60 82 L56 84 L52 78 
+           L48 78 L44 84 L40 82 L42 76 
+           L38 73 L32 78 L28 75 L32 69 
+           L28 66 L22 70 L18 66 L24 61 
+           L20 57 L15 60 L12 56 L18 53 
+           L17 48 L10 46 L10 42 L17 40 
+           L17 35 L11 32 L12 28 L18 27 
+           L20 23 L15 18 L18 14 L24 17 
+           L28 14 L26 8 L30 6 L34 11 
+           L38 10 L40 4 L44 4 L46 10 Z" 
+        fill="url(#gearGradient)" 
+        stroke="#0a84ff" 
+        stroke-width="0.5"/>
+  
+  <!-- Círculo interno (buraco) -->
+  <circle cx="50" cy="46" r="18" fill="#0a0a0a"/>
+  
+  <!-- Anel interno 3D -->
+  <circle cx="50" cy="46" r="14" fill="none" stroke="url(#gearGradient)" stroke-width="3"/>
+  
+  <!-- Destaque brilhante (efeito 3D) -->
+  <ellipse cx="42" cy="38" rx="12" ry="8" fill="url(#highlightGradient)"/>
+  
+  <!-- Sombra interna -->
+  <circle cx="50" cy="46" r="18" fill="url(#innerShadow)"/>
+</svg>
 </button>     
                    
             </div>
