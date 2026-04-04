@@ -21,6 +21,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>RARO Rec</title>
     <style>
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  * {
+    margin: 0;
+    /* ... resto continua igual */
         * {
             margin: 0;
             padding: 0;
@@ -967,7 +975,7 @@
                 </div>
 
                 <button class="settings-btn" id="settingsBtn">
-  <img src="RARO_CAM_Completo/settings-icon.png" width="45" height="45" alt="Configurações">
+  <img src="RARO_CAM_Completo/settings-icon.png" width="45" height="45" alt="Configurações" style="animation: spin 4s linear infinite;">
 </button>
             </div>
         </div>
