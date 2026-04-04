@@ -495,20 +495,22 @@
         }
 
         .settings-btn {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background: rgba(40, 40, 60, 0.7);
-            border: 1px solid rgba(255,255,255,0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: rgba(40, 40, 60, 0.7);
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+  position: absolute;
+  right: 40px;
+  bottom: 50px;
+  overflow: hidden;
+}
 
         .settings-btn:active {
             transform: scale(0.9) rotate(30deg);
@@ -964,18 +966,9 @@
 
 <!-- NOVO: Ícone 3D PNG -->
 <button class="gallery-btn" id="galleryBtn" style="position: relative; overflow: visible;">
-  <img src="RARO_CAM_Completo/gallery-icon.png" width="45" height="45" alt="Galeria" style="animation: spin 4s linear infinite;">
+  <img src="RARO_CAM_Completo/gallery-icon.png" width="45" height="45" alt="Galeria">
 </button>
-                        <rect x="5" y="7" width="6" height="4" rx="1" fill="url(#galleryGradient)" opacity="0.8"/>
-                        <rect x="13" y="7" width="6" height="4" rx="1" fill="url(#galleryGradient)" opacity="0.6"/>
-                        <rect x="5" y="13" width="6" height="4" rx="1" fill="url(#galleryGradient)" opacity="0.6"/>
-                        <rect x="13" y="13" width="6" height="4" rx="1" fill="url(#galleryGradient)" opacity="0.8"/>
-                        <!-- Play button overlay -->
-                        <circle cx="18" cy="6" r="3" fill="#0a84ff" opacity="0.9"/>
-                        <path d="M17.5 5.5 L18.5 6 L17.5 6.5 Z" fill="white"/>
-                    </svg>
-                    <div style="position: absolute; inset: -2px; border-radius: 12px; background: linear-gradient(135deg, rgba(10,132,255,0.3), rgba(191,90,242,0.3)); opacity: 0; transition: opacity 0.3s; pointer-events: none;" class="gallery-glow"></div>
-                </button>
+                       
 
                 <div class="record-btn-container">
                     <button class="record-btn" id="recordBtn"></button>
