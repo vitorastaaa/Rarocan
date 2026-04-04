@@ -941,24 +941,31 @@
             </div>
 
             <div class="bottom-controls">
-                <button class="gallery-btn" id="galleryBtn" style="position: relative; overflow: visible;">
-                    <svg viewBox="0 0 24 24" style="filter: drop-shadow(0 0 8px rgba(10, 132, 255, 0.6));">
-                        <defs>
-                            <linearGradient id="galleryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#0a84ff;stop-opacity:1" />
-                                <stop offset="50%" style="stop-color:#5e5ce6;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#bf5af2;stop-opacity:1" />
-                            </linearGradient>
-                            <filter id="glow">
-                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                                <feMerge>
-                                    <feMergeNode in="coloredBlur"/>
-                                    <feMergeNode in="SourceGraphic"/>
-                                </feMerge>
-                            </filter>
-                        </defs>
-                        <!-- Ícone de galeria tech - combinação de filme + play -->
-                        <rect x="2" y="4" width="20" height="16" rx="3" fill="none" stroke="url(#galleryGradient)" stroke-width="1.5" filter="url(#glow)"/>
+                <!-- BACKUP: Ícone SVG original -->
+<!-- <button class="gallery-btn" id="galleryBtn" style="position: relative; overflow: visible;">
+  <svg viewBox="0 0 24 24" style="filter: drop-shadow(0 0 8px rgba(10, 132, 255, 0.6));">
+    <defs>
+      <linearGradient id="galleryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#0a84ff;stop-opacity:1" />
+        <stop offset="50%" style="stop-color:#5e5ce6;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#bf5af2;stop-opacity:1" />
+      </linearGradient>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+    <rect x="2" y="4" width="20" height="16" rx="3" fill="none" stroke="url(#galleryGradient)" stroke-width="1.5" filter="url(#glow)"/>
+  </svg>
+</button> -->
+
+<!-- NOVO: Ícone 3D PNG -->
+<button class="gallery-btn" id="galleryBtn" style="position: relative; overflow: visible;">
+  <img src="RARO_CAM_Completo/gallery-icon.png" width="45" height="45" alt="Galeria" style="animation: spin 4s linear infinite;">
+</button>
                         <rect x="5" y="7" width="6" height="4" rx="1" fill="url(#galleryGradient)" opacity="0.8"/>
                         <rect x="13" y="7" width="6" height="4" rx="1" fill="url(#galleryGradient)" opacity="0.6"/>
                         <rect x="5" y="13" width="6" height="4" rx="1" fill="url(#galleryGradient)" opacity="0.6"/>
