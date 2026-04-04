@@ -842,13 +842,17 @@
         }
         .gallery-btn svg {
             transition: all 0.3s ease;
-        }@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
+        }/* Linha 844-851: @keyframes spin */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Linha 852-862: @keyframes pulse */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
 }
 </style>
 <base target="_blank">
