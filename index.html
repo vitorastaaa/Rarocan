@@ -1552,11 +1552,16 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
     });
 });
 
-// Inicializar idioma ao carregar (com delay para garantir que DOM está pronto)
+// Inicializar idioma ao carregar (com dupla atualização para garantir CSS renderizado)
 document.addEventListener('DOMContentLoaded', function() {
+    // Primeira atualização imediata
+    updateLanguage(currentLang);
+    
+    // Segunda atualização após 1 segundo para garantir que CSS está 100% aplicado
     setTimeout(function() {
         updateLanguage(currentLang);
-    }, 100);
+    }, 1000);
+});
 });
 // ==================== FIM SISTEMA DE TRADUÇÃO ====================
     </script>
