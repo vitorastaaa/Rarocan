@@ -1166,9 +1166,15 @@
                         navigator.vibrate(50);
                     }
                 }
+function subscribe() {
+    const planName = selectedPlan === 'monthly' ? 'Mensal (R$ 9,90)' : 'Anual (R$ 89,90)';
+    console.log('Assinando plano: ' + planName);
+    alert('Redirecionando para pagamento do plano ' + planName);
+    // Aqui você integra com a API de pagamento (Stripe, PayPal, etc.)
+}
             </script>
             <!-- Botões de ação -->
-            <button class="subscription-btn" style="background: linear-gradient(135deg, #0a84ff, #0066cc); margin: 0 20px 12px 20px; width: calc(100% - 40px); border-radius: 12px; padding: 16px; font-size: 17px; font-weight: 600;">Assinar agora</button>
+            <button class="subscription-btn" style="..." onclick="subscribe()">Assinar agora</button>
 
             <button style="background: rgba(120, 120, 128, 0.24); color: #fff; border: none; margin: 0 20px 12px 20px; width: calc(100% - 40px); border-radius: 12px; padding: 16px; font-size: 17px; font-weight: 600; cursor: pointer;" onclick="restorePurchases()">Restaurar compras</button>
 
