@@ -1552,15 +1552,11 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
     });
 });
 
-// Inicializar idioma ao carregar (só atualiza se não for PT, para evitar travamentos)
+// Inicializar idioma ao carregar (com delay para garantir que DOM está pronto)
 document.addEventListener('DOMContentLoaded', function() {
-    // Se o idioma for diferente de PT (padrão), aplica a tradução com delay seguro
-    if (currentLang !== 'pt') {
-        setTimeout(function() {
-            updateLanguage(currentLang);
-        }, 300);
-    }
-});
+    setTimeout(function() {
+        updateLanguage(currentLang);
+    }, 100);
 });
 // ==================== FIM SISTEMA DE TRADUÇÃO ====================
     </script>
