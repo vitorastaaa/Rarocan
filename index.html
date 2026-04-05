@@ -842,18 +842,7 @@
         }
         .gallery-btn svg {
             transition: all 0.3s ease;
-        }/* Linha 844-851: @keyframes spin */
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-/* Linha 852-862: @keyframes pulse */
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-}
+        }
 </style>
 <base target="_blank">
 </head>
@@ -945,7 +934,31 @@
 
             <div class="bottom-controls">
                 <button class="gallery-btn" id="galleryBtn" style="position: relative; overflow: visible;">
-                    <img src="RARO_CAM_Completo/gallery-icon.png" width="45" height="45" alt="Galeria" style="animation: pulse 2s ease-in-out infinite;">
+                    <svg viewBox="0 0 24 24" style="filter: drop-shadow(0 0 8px rgba(10, 132, 255, 0.6));">
+                        <defs>
+                            <linearGradient id="galleryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#0a84ff;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#5e5ce6;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#bf5af2;stop-opacity:1" />
+                            </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <!-- Ícone de galeria tech - combinação de filme + play -->
+                        <rect x="2" y="4" width="20" height="16" rx="3" fill="none" stroke="url(#galleryGradient)" stroke-width="1.5" filter="url(#glow)"/>
+                        <rect x="5" y="7" width="6" height="4" rx="1" fill="url(#galleryGradient)" opacity="0.8"/>
+                        <rect x="13" y="7" width="6" height="4" rx="1" fill="url(#galleryGradient)" opacity="0.6"/>
+                        <rect x="5" y="13" width="6" height="4" rx="1" fill="url(#galleryGradient)" opacity="0.6"/>
+                        <rect x="13" y="13" width="6" height="4" rx="1" fill="url(#galleryGradient)" opacity="0.8"/>
+                        <!-- Play button overlay -->
+                        <circle cx="18" cy="6" r="3" fill="#0a84ff" opacity="0.9"/>
+                        <path d="M17.5 5.5 L18.5 6 L17.5 6.5 Z" fill="white"/>
+                    </svg>
                     <div style="position: absolute; inset: -2px; border-radius: 12px; background: linear-gradient(135deg, rgba(10,132,255,0.3), rgba(191,90,242,0.3)); opacity: 0; transition: opacity 0.3s; pointer-events: none;" class="gallery-glow"></div>
                 </button>
 
@@ -954,7 +967,7 @@
                 </div>
 
                 <button class="settings-btn" id="settingsBtn">
-  <img src="RARO_CAM_Completo/settings-icon.png" width="45" height="45" alt= style="animation: spin 8s linear infinite;">
+  <img src="RARO_CAM_Complete/settings-icon.png" width="45" height="45" alt="Configurações" style="animation: spin 8s linear infinite;">
 </button>
             </div>
         </div>
@@ -963,7 +976,7 @@
         <div class="settings-screen" id="settingsScreen">
             <button class="back-btn" id="backBtn">←</button>
 
-            
+            <div class="settings-title">Configurações</div>
 
             <div class="settings-section">
                 <div class="section-title">Qualidade de Gravação</div>
@@ -1012,19 +1025,19 @@
                 </div>
             </div>
 
-                <div class="settings-section">
+            <div class="settings-section">
                 <div class="section-title">Idioma</div>
                 <div class="language-grid">
-                    <div class="lang-btn active" data-lang="pt" onclick="selectLanguage('pt')">
-                        <span class="lang-flag">&#127463;&#127479;</span>
+                    <div class="lang-btn active" data-lang="pt">
+                        <span class="lang-flag">🇧🇷</span>
                         <span class="lang-code">PT</span>
                     </div>
-                    <div class="lang-btn" data-lang="es" onclick="selectLanguage('es')">
-                        <span class="lang-flag">&#127466;&#127480;</span>
+                    <div class="lang-btn" data-lang="es">
+                        <span class="lang-flag">🇪🇸</span>
                         <span class="lang-code">ES</span>
                     </div>
-                    <div class="lang-btn" data-lang="en" onclick="selectLanguage('en')">
-                        <span class="lang-flag">&#127482;&#127480;</span>
+                    <div class="lang-btn" data-lang="en">
+                        <span class="lang-flag">🇺🇸</span>
                         <span class="lang-code">EN</span>
                     </div>
                 </div>
@@ -1039,535 +1052,50 @@
         </div>
 
         <!-- Modal de Assinatura -->
-<div class="subscription-modal" id="subscriptionModal" style="max-width: 100vw; overflow-x: hidden;">
-  <button class="close-modal" id="closeModal">×</button>
-  
-  <!-- Container dos planos - CORRIGIDO para forçar lado a lado -->
-  <div style="display: flex; flex-direction: row; justify-content: center; align-items: flex-start; gap: 10px; flex-wrap: nowrap; width: 100%; padding: 10px; box-sizing: border-box;">
-    
-    <!-- PLANO MENSAL - SELECIONÁVEL -->
-    <div onclick="selectPlan('monthly')" id="plan-monthly" style="
-      background: rgba(30, 30, 45, 0.9); 
-      border-radius: 20px; 
-      padding: 20px; 
-      margin: 0; 
-      text-align: center; 
-      border: 2px solid #FFD700; 
-      flex: 0 0 160px; 
-      width: 160px; 
-      min-width: 160px;
-      max-width: 160px;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-      transition: all 0.3s ease;
-      box-sizing: border-box;
-    ">
-      <div style="font-size: 40px; margin-bottom: 10px; text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); line-height: 1;">👑</div>
-      <div style="font-size: 18px; font-weight: 800; margin-bottom: 4px; color: #FFD700; line-height: 1.2;">RARO CAM<br>Premium</div>
-      <div style="color: #8e8e93; margin-bottom: 12px; font-size: 11px; line-height: 1.2;">Desbloqueie todo o potencial</div>
-      <div style="font-size: 28px; font-weight: 700; margin-bottom: 6px; color: #fff; line-height: 1;">R$ 9,90<span style="font-size: 12px; color: #8e8e93; font-weight: 400;">/mês</span></div>
-      
-      <!-- Banner 15 dias grátis -->
-      <div style="background: rgba(255, 215, 0, 0.15); border-radius: 8px; padding: 8px; margin-bottom: 15px; border: 1px solid rgba(255, 215, 0, 0.3);">
-        <div style="color: #FFD700; font-size: 11px; font-weight: 600; line-height: 1.2;">✨ 15 dias grátis</div>
-        <div style="color: #FFD700; font-size: 10px; margin-top: 2px; line-height: 1.2;">Após isso será cobrado!</div>
-      </div>
-      
-      <!-- Benefícios -->
-      <div style="text-align: left; padding: 0 5px;">
-        <div style="display: flex; align-items: center; margin-bottom: 10px; color: #fff; font-size: 12px; line-height: 1.3;">
-          <span style="margin-right: 8px; font-size: 14px; flex-shrink: 0;">🎥</span>
-          <span>Gravação em 4K 60fps</span>
-        </div>
-        <div style="display: flex; align-items: center; margin-bottom: 10px; color: #fff; font-size: 12px; line-height: 1.3;">
-          <span style="margin-right: 8px; font-size: 14px; flex-shrink: 0;">⏱️</span>
-          <span>Buffer estendido (até 60s)</span>
-        </div>
-        <div style="display: flex; align-items: center; color: #fff; font-size: 12px; line-height: 1.3;">
-          <span style="margin-right: 8px; font-size: 14px; flex-shrink: 0;">🚫</span>
-          <span>Sem Anúncios</span>
-        </div>
-      </div>
-      
-      <!-- Indicador de seleção -->
-      <div id="check-monthly" style="margin-top: 12px; opacity: 1;">
-        <span style="color: #FFD700; font-size: 20px; line-height: 1;">✓</span>
-        <span style="color: #FFD700; font-size: 11px; margin-left: 4px; line-height: 1;">Selecionado</span>
-      </div>
-    </div>
-    
-    <!-- PLANO ANUAL - SELECIONÁVEL -->
-    <div onclick="selectPlan('annual')" id="plan-annual" style="
-      background: rgba(30, 30, 45, 0.9); 
-      border-radius: 20px; 
-      padding: 20px; 
-      margin: 0; 
-      text-align: center; 
-      border: 1px solid rgba(255,215,0,0.3); 
-      flex: 0 0 160px; 
-      width: 160px; 
-      min-width: 160px;
-      max-width: 160px;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-      transition: all 0.3s ease;
-      box-sizing: border-box;
-    ">
-      <div style="font-size: 40px; margin-bottom: 10px; text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); line-height: 1;">👑</div>
-      <div style="font-size: 18px; font-weight: 800; margin-bottom: 4px; color: #FFD700; line-height: 1.2;">RARO CAM<br>Premium</div>
-      <div style="color: #8e8e93; margin-bottom: 12px; font-size: 11px; line-height: 1.2;">Desbloqueie todo o potencial</div>
-      <div style="font-size: 28px; font-weight: 700; margin-bottom: 6px; color: #fff; line-height: 1;">R$ 89,90<span style="font-size: 12px; color: #8e8e93; font-weight: 400;">/ano</span></div>
-      
-      <!-- Banner 15 dias grátis -->
-      <div style="background: rgba(255, 215, 0, 0.15); border-radius: 8px; padding: 8px; margin-bottom: 15px; border: 1px solid rgba(255, 215, 0, 0.3);">
-        <div style="color: #FFD700; font-size: 11px; font-weight: 600; line-height: 1.2;">✨ 15 dias grátis</div>
-        <div style="color: #FFD700; font-size: 10px; margin-top: 2px; line-height: 1.2;">Após isso será cobrado!</div>
-      </div>
-      
-      <!-- Benefícios -->
-      <div style="text-align: left; padding: 0 5px;">
-        <div style="display: flex; align-items: center; margin-bottom: 10px; color: #fff; font-size: 12px; line-height: 1.3;">
-          <span style="margin-right: 8px; font-size: 14px; flex-shrink: 0;">🎥</span>
-          <span>Gravação em 4K 60fps</span>
-        </div>
-        <div style="display: flex; align-items: center; margin-bottom: 10px; color: #fff; font-size: 12px; line-height: 1.3;">
-          <span style="margin-right: 8px; font-size: 14px; flex-shrink: 0;">⏱️</span>
-          <span>Buffer estendido (até 60s)</span>
-        </div>
-        <div style="display: flex; align-items: center; color: #fff; font-size: 12px; line-height: 1.3;">
-          <span style="margin-right: 8px; font-size: 14px; flex-shrink: 0;">🚫</span>
-          <span>Sem Anúncios</span>
-        </div>
-      </div>
-      
-      <!-- Indicador de seleção (inicialmente oculto) -->
-      <div id="check-annual" style="margin-top: 12px; opacity: 0;">
-        <span style="color: #FFD700; font-size: 20px; line-height: 1;">✓</span>
-        <span style="color: #FFD700; font-size: 11px; margin-left: 4px; line-height: 1;">Selecionado</span>
-      </div>
-    </div>
-    
-  </div>
-  
-  <!-- Botões de ação - OTIMIZADO PARA MOBILE -->
-  <div style="margin-top: 20px; padding: 0 15px; width: 100%; box-sizing: border-box;">
-    
-    <!-- Botão Assinar agora -->
-    <button onclick="confirmSubscription()" style="
-      width: 100%;
-      background: linear-gradient(135deg, #007AFF, #0051D5);
-      color: white;
-      border: none;
-      border-radius: 14px;
-      padding: 18px;
-      font-size: 18px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-bottom: 12px;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-      min-height: 56px;
-      box-sizing: border-box;
-    ">Assinar agora</button>
-    
-    <!-- Botão Restaurar compras -->
-    <button style="
-      width: 100%;
-      background: rgba(255, 255, 255, 0.12);
-      color: white;
-      border: none;
-      border-radius: 14px;
-      padding: 18px;
-      font-size: 17px;
-      font-weight: 600;
-      cursor: pointer;
-      margin-bottom: 12px;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-      min-height: 52px;
-      box-sizing: border-box;
-    ">Restaurar compras</button>
-    
-    <!-- Botão Voltar -->
-    <button onclick="closeModal()" style="
-      width: 100%;
-      background: rgba(255, 255, 255, 0.06);
-      color: white;
-      border: none;
-      border-radius: 14px;
-      padding: 18px;
-      font-size: 17px;
-      font-weight: 600;
-      cursor: pointer;
-      margin-bottom: 24px;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-      min-height: 52px;
-      box-sizing: border-box;
-    ">Voltar</button>
-    
-    <!-- Texto de assinatura -->
-    <div style="
-      text-align: center;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 12px;
-      line-height: 1.6;
-      padding: 0 10px;
-      margin-bottom: 30px;
-    ">
-      Assinatura mensal com renovação automática.<br>
-      Cancele a qualquer momento nas configurações da App Store.
-    </div>
-  </div>
-  
-</div>
+        <div class="subscription-modal" id="subscriptionModal">
+            <button class="close-modal" id="closeModal">×</button>
 
-<script>
-// Função para selecionar plano
-function selectPlan(plan) {
-  // Resetar ambos os cards
-  document.getElementById('plan-monthly').style.border = '1px solid rgba(255,215,0,0.3)';
-  document.getElementById('plan-annual').style.border = '1px solid rgba(255,215,0,0.3)';
-  document.getElementById('check-monthly').style.opacity = '0';
-  document.getElementById('check-annual').style.opacity = '0';
-  
-  // Destacar o selecionado
-  if (plan === 'monthly') {
-    document.getElementById('plan-monthly').style.border = '2px solid #FFD700';
-    document.getElementById('check-monthly').style.opacity = '1';
-  } else {
-    document.getElementById('plan-annual').style.border = '2px solid #FFD700';
-    document.getElementById('check-annual').style.opacity = '1';
-  }
-  
-  // Salvar seleção
-  localStorage.setItem('selectedPlan', plan);
-}
+            <!-- Caixinha Premium -->
+            <div style="background: rgba(30, 30, 45, 0.9); border-radius: 20px; padding: 30px; margin: 0 20px 20px 20px; text-align: center; border: 1px solid rgba(255,215,0,0.3);">
+                <div style="font-size: 56px; margin-bottom: 15px; text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);">👑</div>
+                <div style="font-size: 26px; font-weight: 800; margin-bottom: 8px; color: #FFD700;">RARO CAM Premium</div>
+                <div style="color: #8e8e93; margin-bottom: 20px; font-size: 14px;">Desbloqueie todo o potencial</div>
+                <div style="font-size: 42px; font-weight: 700; margin-bottom: 10px; color: #fff;">R$ 9,90<span style="font-size: 16px; color: #8e8e93; font-weight: 400;">/mês</span></div>
 
-// Função para confirmar assinatura
-function confirmSubscription() {
-  const selectedPlan = localStorage.getItem('selectedPlan') || 'monthly';
-  const planName = selectedPlan === 'monthly' ? 'Mensal (R$ 9,90)' : 'Anual (R$ 89,90)';
-  alert('Redirecionando para pagamento do plano: ' + planName);
-}
+                <!-- Banner 15 dias grátis -->
+                <div style="background: rgba(255, 215, 0, 0.15); border-radius: 10px; padding: 12px; margin-bottom: 25px; border: 1px solid rgba(255, 215, 0, 0.3);">
+                    <div style="color: #FFD700; font-size: 14px; font-weight: 600;">✨ 15 dias grátis</div>
+                    <div style="color: #FFD700; font-size: 13px; margin-top: 3px;">Após isso será cobrado!</div>
+                </div>
 
-// Fechar modal
-function closeModal() {
-  document.getElementById('subscriptionModal').style.display = 'none';
-}
-// Função para selecionar idioma
-function selectLanguage(lang) {
-    // Remover classe 'active' de todos os botões
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    
-    // Adicionar classe 'active' no botão selecionado
-    document.querySelector('.lang-btn[data-lang="' + lang + '"]').classList.add('active');
-    
-    // Salvar idioma no localStorage
-    localStorage.setItem('selectedLanguage', lang);
-    
-    // Aplicar traduções
-    applyTranslations(lang);
-    
-    console.log('Idioma selecionado:', lang);
-}
+                <!-- Apenas 3 itens solicitados -->
+                <div style="text-align: left; padding: 0 10px;">
+                    <div style="display: flex; align-items: center; margin-bottom: 16px; color: #fff; font-size: 16px;">
+                        <span style="margin-right: 12px; font-size: 20px;">🎥</span>
+                        <span>Gravação em 4K 60fps</span>
+                    </div>
+                    <div style="display: flex; align-items: center; margin-bottom: 16px; color: #fff; font-size: 16px;">
+                        <span style="margin-right: 12px; font-size: 20px;">⏱️</span>
+                        <span>Buffer estendido (até 60s)</span>
+                    </div>
+                    <div style="display: flex; align-items: center; color: #fff; font-size: 16px;">
+                        <span style="margin-right: 12px; font-size: 20px;">🚫</span>
+                        <span>Sem Anúncios</span>
+                    </div>
+                </div>
+            </div>
 
-// Objeto com traduções
-const translations = {
-    pt: {
-        settingsTitle: "Configurações",
-        qualityTitle: "Qualidade de Gravação",
-        fpsTitle: "Taxa de Quadros",
-        standard: "Padrão",
-        smooth: "Fluido",
-        stabilization: "Estabilização Nativa",
-        on: "Ligado",
-        off: "Desligado",
-        raroReplay: "RARO Replay",
-        replayDesc: "Grava 15 ou 30 segundos antes do comando de voz 'RARO' ou do botão na tela inicial.",
-        bluetooth: "Controle Bluetooth",
-        bluetoothDesc: "Ao ativar, o reconhecimento de voz é desativado. A gravação passa a ser controlada pelos botões de volume ou controle Bluetooth.",
-        voiceOn: "Voz ativada",
-        voiceOff: "Voz desligada",
-        plans: "Ver Planos",
-        monthly: "Mensal",
-        annual: "Anual",
-        unlock: "Desbloqueie todo o potencial",
-        record4k: "Gravação em 4K 60fps",
-        extendedBuffer: "Buffer estendido (até 60s)",
-        noAds: "Sem Anúncios",
-        selected: "Selecionado",
-        subscribe: "Assinar agora",
-        restore: "Restaurar compras",
-        cancelInfo: "Assinatura mensal com renovação automática. Cancele a qualquer momento nas configurações da App Store.",
-        warning: "Aviso",
-        warningText: "O RARO não grava em segundo plano. Se minimizar, feche-o completamente.",
-        lockInfo: "Para bloquear a gravação, utilize o botão LOCK.",
-        avoidButton: "Evite o botão lateral do celular.",
-        useLock: "Não bloqueie pelo botão lateral. Use o LOCK.",
-        cameraActive: "Câmera Ativa",
-        replayActive: "Replay Ativo",
-        voiceActive: "Voz Ativa",
-        raroActive: "RARO Ativo",
-        premium: "Premium",
-        freeDays: "15 dias grátis",
-        after: "Após isso será cobrado!"
-    },
-    es: {
-        settingsTitle: "Configuración",
-        qualityTitle: "Calidad de Grabación",
-        fpsTitle: "Tasa de Cuadros",
-        standard: "Estándar",
-        smooth: "Fluido",
-        stabilization: "Estabilización Nativa",
-        on: "Encendido",
-        off: "Apagado",
-        raroReplay: "RARO Replay",
-        replayDesc: "Graba 15 o 30 segundos antes del comando de voz 'RARO' o del botón en la pantalla inicial.",
-        bluetooth: "Control Bluetooth",
-        bluetoothDesc: "Al activar, el reconocimiento de voz se desactiva. La grabación pasa a ser controlada por los botones de volumen o control Bluetooth.",
-        voiceOn: "Voz activada",
-        voiceOff: "Voz desactivada",
-        plans: "Ver Planes",
-        monthly: "Mensual",
-        annual: "Anual",
-        unlock: "Desbloquea todo el potencial",
-        record4k: "Grabación en 4K 60fps",
-        extendedBuffer: "Buffer extendido (hasta 60s)",
-        noAds: "Sin Anuncios",
-        selected: "Seleccionado",
-        subscribe: "Suscribirse",
-        restore: "Restaurar compras",
-        cancelInfo: "Suscripción mensual con renovación automática. Cancele en cualquier momento en la configuración de la App Store.",
-        warning: "Advertencia",
-        warningText: "RARO no graba en segundo plano. Si minimiza, ciérrelo completamente.",
-        lockInfo: "Para bloquear la grabación, utilice el botón LOCK.",
-        avoidButton: "Evite el botón lateral del celular.",
-        useLock: "No bloquee por el botón lateral. Use el LOCK.",
-        cameraActive: "Cámara Activa",
-        replayActive: "Replay Activo",
-        voiceActive: "Voz Activa",
-        raroActive: "RARO Activo",
-        premium: "Premium",
-        freeDays: "15 días gratis",
-        after: "¡Después se cobrará!"
-    },
-    en: {
-        settingsTitle: "Settings",
-        qualityTitle: "Recording Quality",
-        fpsTitle: "Frame Rate",
-        standard: "Standard",
-        smooth: "Smooth",
-        stabilization: "Native Stabilization",
-        on: "On",
-        off: "Off",
-        raroReplay: "RARO Replay",
-        replayDesc: "Records 15 or 30 seconds before the voice command 'RARO' or the button on the home screen.",
-        bluetooth: "Bluetooth Control",
-        bluetoothDesc: "When activated, voice recognition is disabled. Recording is controlled by volume buttons or Bluetooth control.",
-        voiceOn: "Voice on",
-        voiceOff: "Voice off",
-        plans: "View Plans",
-        monthly: "Monthly",
-        annual: "Annual",
-        unlock: "Unlock full potential",
-        record4k: "4K 60fps Recording",
-        extendedBuffer: "Extended buffer (up to 60s)",
-        noAds: "No Ads",
-        selected: "Selected",
-        subscribe: "Subscribe now",
-        restore: "Restore purchases",
-        cancelInfo: "Monthly subscription with automatic renewal. Cancel anytime in App Store settings.",
-        warning: "Warning",
-        warningText: "RARO does not record in background. If minimized, close it completely.",
-        lockInfo: "To lock recording, use the LOCK button.",
-        avoidButton: "Avoid the phone side button.",
-        useLock: "Don't lock with side button. Use LOCK.",
-        cameraActive: "Camera Active",
-        replayActive: "Replay Active",
-        voiceActive: "Voice Active",
-        raroActive: "RARO Active",
-        premium: "Premium",
-        freeDays: "15 days free",
-        after: "After that you will be charged!"
-    }
-};
+            <!-- Botões de ação -->
+            <button class="subscription-btn" style="background: linear-gradient(135deg, #0a84ff, #0066cc); margin: 0 20px 12px 20px; width: calc(100% - 40px); border-radius: 12px; padding: 16px; font-size: 17px; font-weight: 600;">Assinar agora</button>
 
-// Função para aplicar traduções
-function applyTranslations(lang) {
-    const t = translations[lang] || translations.pt;
-    
-    // Título Configurações
-    const settingsTitle = document.querySelector('.settings-title');
-    if (settingsTitle) settingsTitle.textContent = t.settingsTitle;
-    
-    // Seção Qualidade de Gravação
-    const qualityTitle = document.querySelector('.settings-section:nth-of-type(1) .section-title');
-    if (qualityTitle) qualityTitle.textContent = t.qualityTitle;
-    
-    // Seção Taxa de Quadros
-    const fpsTitle = document.querySelector('.settings-section:nth-of-type(2) .section-title');
-    if (fpsTitle) fpsTitle.textContent = t.fpsTitle;
-    
-    // Botões Padrão/Fluido
-    const toggleBtns = document.querySelectorAll('.toggle-btn small');
-    toggleBtns.forEach(small => {
-        const text = small.textContent;
-        if (text === 'Padrão' || text === 'Estándar' || text === 'Standard') {
-            small.textContent = t.standard;
-        }
-        if (text === 'Fluido' || text === 'Fluido' || text === 'Smooth') {
-            small.textContent = t.smooth;
-        }
-    });
-    
-    // Estabilização Nativa
-    const stabLabel = document.querySelector('.option-label');
-    if (stabLabel) stabLabel.textContent = t.stabilization;
-    
-    // Ligado/Desligado
-    const stabValue = document.querySelector('.option-value');
-    if (stabValue) {
-        const text = stabValue.textContent;
-        if (text === 'Ligado' || text === 'Encendido' || text === 'On') {
-            stabValue.textContent = t.on;
-        }
-        if (text === 'Desligado' || text === 'Apagado' || text === 'Off') {
-            stabValue.textContent = t.off;
-        }
-    }
-    
-        // RARO Replay - 5ª seção (índice 4)
-    const replaySection = document.querySelectorAll('.settings-section')[4];
-    if (replaySection) {
-        const replayTitle = replaySection.querySelector('.section-title');
-        if (replayTitle) replayTitle.textContent = t.raroReplay;
-        
-        const replayDesc = replaySection.querySelector('div:not(.section-title)');
-        if (replayDesc) replayDesc.textContent = t.replayDesc;
-    }
+            <button style="background: rgba(120, 120, 128, 0.24); color: #fff; border: none; margin: 0 20px 12px 20px; width: calc(100% - 40px); border-radius: 12px; padding: 16px; font-size: 17px; font-weight: 600; cursor: pointer;" onclick="restorePurchases()">Restaurar compras</button>
 
-    // Controle Bluetooth - 6ª seção (índice 5)
-    const btSection = document.querySelectorAll('.settings-section')[5];
-    if (btSection) {
-        const btTitle = btSection.querySelector('.section-title');
-        if (btTitle) btTitle.textContent = t.bluetooth;
-        
-        const btDesc = btSection.querySelector('div:not(.section-title)');
-        if (btDesc) btDesc.textContent = t.bluetoothDesc;
-    }
-    
-    // Botões Voz ativada/desligada
-    const voiceSections = document.querySelectorAll('.settings-section');
-    voiceSections.forEach(section => {
-        const title = section.querySelector('.section-title');
-        if (title && title.textContent.includes('Bluetooth')) {
-            const btns = section.querySelectorAll('.toggle-btn small');
-            btns.forEach(small => {
-                const text = small.textContent;
-                if (text.includes('ativada') || text.includes('activada') || text.includes('on')) {
-                    small.textContent = t.voiceOn;
-                }
-                if (text.includes('desligada') || text.includes('desactivada') || text.includes('off')) {
-                    small.textContent = t.voiceOff;
-                }
-            });
-        }
-    });
-    
-    // Ver Planos
-    const plansSections = document.querySelectorAll('.settings-section');
-    plansSections.forEach(section => {
-        const title = section.querySelector('.section-title');
-        if (title && (title.textContent.includes('Planos') || title.textContent.includes('Planes') || title.textContent.includes('Plans'))) {
-            title.textContent = t.plans;
-        }
-    });
-    
-    console.log('Traduções aplicadas:', lang);
-}
+            <button style="background: rgba(120, 120, 128, 0.24); color: #fff; border: none; margin: 0 20px 20px 20px; width: calc(100% - 40px); border-radius: 12px; padding: 16px; font-size: 17px; font-weight: 600; cursor: pointer;" onclick="closeModal()">Voltar</button>
 
-// Carregar idioma salvo ao iniciar
-document.addEventListener('DOMContentLoaded', function() {
-    const savedLang = localStorage.getItem('selectedLanguage') || 'pt';
-    selectLanguage(savedLang);
-});
-</script>
-
-                <!-- Botões de ação - OTIMIZADO PARA MOBILE -->
-    <div style="margin-top: 20px; padding: 0 15px; width: 100%; box-sizing: border-box;">
-      
-      <!-- Botão Assinar agora -->
-      <button style="
-        width: 100%;
-        background: linear-gradient(135deg, #007AFF, #0051D5);
-        color: white;
-        border: none;
-        border-radius: 14px;
-        padding: 18px;
-        font-size: 18px;
-        font-weight: 700;
-        cursor: pointer;
-        margin-bottom: 12px;
-        -webkit-tap-highlight-color: transparent;
-        touch-action: manipulation;
-        min-height: 56px;
-      ">Assinar agora</button>
-      
-      <!-- Botão Restaurar compras -->
-      <button style="
-        width: 100%;
-        background: rgba(255, 255, 255, 0.12);
-        color: white;
-        border: none;
-        border-radius: 14px;
-        padding: 18px;
-        font-size: 17px;
-        font-weight: 600;
-        cursor: pointer;
-        margin-bottom: 12px;
-        -webkit-tap-highlight-color: transparent;
-        touch-action: manipulation;
-        min-height: 52px;
-      ">Restaurar compras</button>
-      
-      <!-- Botão Voltar -->
-      <button style="
-        width: 100%;
-        background: rgba(255, 255, 255, 0.06);
-        color: white;
-        border: none;
-        border-radius: 14px;
-        padding: 18px;
-        font-size: 17px;
-        font-weight: 600;
-        cursor: pointer;
-        margin-bottom: 24px;
-        -webkit-tap-highlight-color: transparent;
-        touch-action: manipulation;
-        min-height: 52px;
-      ">Voltar</button>
-      
-      <!-- Texto de assinatura -->
-      <div style="
-        text-align: center;
-        color: rgba(255, 255, 255, 0.5);
-        font-size: 12px;
-        line-height: 1.6;
-        padding: 0 10px;
-        margin-bottom: 30px;
-      ">
-        Assinatura mensal com renovação automática.<br>
-        Cancele a qualquer momento nas configurações da App Store.
-      </div>
-    </div>
-    
-  </div>
-</div>
+            <!-- Informação de renovação automática -->
+            <div style="color: #8e8e93; font-size: 12px; text-align: center; padding: 0 30px 20px 30px; line-height: 1.5;">
+                Assinatura mensal com renovação automática.<br>
+                Cancele a qualquer momento nas configurações da App Store.
             </div>
 
         </div>
@@ -1727,5 +1255,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         document.head.appendChild(style);
     </script>
+</body>
+</html>
 </body>
 </html>
