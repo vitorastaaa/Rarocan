@@ -1399,74 +1399,101 @@ function updateLanguage(lang) {
     const titleEl = document.querySelector('.settings-title');
     if (titleEl) titleEl.textContent = t.settings_title;
     
-    // Atualizar seções
+    // Atualizar seções (com verificações de segurança)
     const sections = document.querySelectorAll('.settings-section');
-    if (sections[0]) {
-        sections[0].querySelector('.section-title').textContent = t.recording_quality;
+    
+    // Seção 0: Qualidade de Gravação
+    if (sections.length > 0 && sections[0]) {
+        const sectionTitle = sections[0].querySelector('.section-title');
+        if (sectionTitle) sectionTitle.textContent = t.recording_quality;
+        
         const resBtns = sections[0].querySelectorAll('.res-btn');
-        if (resBtns[0]) resBtns[0].textContent = t['720p_hd'];
-        if (resBtns[1]) resBtns[1].textContent = t['1080p_fullhd'];
-        if (resBtns[2]) resBtns[2].textContent = t['4k_ultra'];
-        if (resBtns[3]) resBtns[3].textContent = t['4k_60fps'];
+        if (resBtns.length > 0 && resBtns[0]) resBtns[0].textContent = t['720p_hd'];
+        if (resBtns.length > 1 && resBtns[1]) resBtns[1].textContent = t['1080p_fullhd'];
+        if (resBtns.length > 2 && resBtns[2]) resBtns[2].textContent = t['4k_ultra'];
+        if (resBtns.length > 3 && resBtns[3]) resBtns[3].textContent = t['4k_60fps'];
     }
     
-    if (sections[1]) {
-        sections[1].querySelector('.section-title').textContent = t.frame_rate;
+    // Seção 1: Taxa de Quadros
+    if (sections.length > 1 && sections[1]) {
+        const sectionTitle = sections[1].querySelector('.section-title');
+        if (sectionTitle) sectionTitle.textContent = t.frame_rate;
+        
         const toggleBtns = sections[1].querySelectorAll('.toggle-btn');
-        if (toggleBtns[0]) {
+        if (toggleBtns.length > 0 && toggleBtns[0]) {
             toggleBtns[0].innerHTML = t['30fps'] + '<br><small>' + t['30fps_desc'] + '</small>';
         }
-        if (toggleBtns[1]) {
+        if (toggleBtns.length > 1 && toggleBtns[1]) {
             toggleBtns[1].innerHTML = t['60fps'] + '<br><small>' + t['60fps_desc'] + '</small>';
         }
     }
     
-    if (sections[2]) {
-        sections[2].querySelector('.section-title').textContent = t.native_stabilization;
+    // Seção 2: Estabilização Nativa
+    if (sections.length > 2 && sections[2]) {
+        const sectionTitle = sections[2].querySelector('.section-title');
+        if (sectionTitle) sectionTitle.textContent = t.native_stabilization;
+        
         const optionValue = sections[2].querySelector('.option-value');
         if (optionValue) {
-            const isOn = optionValue.textContent.includes('●') && !optionValue.textContent.includes('Desligado') && !optionValue.textContent.includes('Off');
+            const isOn = optionValue.textContent.includes('●') && 
+                        !optionValue.textContent.includes('Desligado') && 
+                        !optionValue.textContent.includes('Off') && 
+                        !optionValue.textContent.includes('Desactivado');
             optionValue.textContent = isOn ? t.on : t.off;
         }
     }
     
-    if (sections[3]) {
-        sections[3].querySelector('.section-title').textContent = t.raro_replay;
+    // Seção 3: RARO Replay
+    if (sections.length > 3 && sections[3]) {
+        const sectionTitle = sections[3].querySelector('.section-title');
+        if (sectionTitle) sectionTitle.textContent = t.raro_replay;
+        
         const desc = sections[3].querySelector('div[style*="color: #8e8e93"]');
         if (desc) desc.textContent = t.replay_desc;
+        
         const replayBtns = sections[3].querySelectorAll('.toggle-btn');
-        if (replayBtns[0]) replayBtns[0].textContent = t['15s'];
-        if (replayBtns[1]) replayBtns[1].textContent = t['30s'];
+        if (replayBtns.length > 0 && replayBtns[0]) replayBtns[0].textContent = t['15s'];
+        if (replayBtns.length > 1 && replayBtns[1]) replayBtns[1].textContent = t['30s'];
     }
     
-    if (sections[4]) {
-        sections[4].querySelector('.section-title').textContent = t.bluetooth_control;
+    // Seção 4: Controle Bluetooth
+    if (sections.length > 4 && sections[4]) {
+        const sectionTitle = sections[4].querySelector('.section-title');
+        if (sectionTitle) sectionTitle.textContent = t.bluetooth_control;
+        
         const desc = sections[4].querySelector('div[style*="color: #8e8e93"]');
         if (desc) desc.textContent = t.bt_desc;
+        
         const btns = sections[4].querySelectorAll('.toggle-btn');
-        if (btns[0]) {
+        if (btns.length > 0 && btns[0]) {
             btns[0].innerHTML = t.bt_off + '<br><small>' + t.bt_off_desc + '</small>';
         }
-        if (btns[1]) {
+        if (btns.length > 1 && btns[1]) {
             btns[1].innerHTML = t.bt_on + '<br><small>' + t.bt_on_desc + '</small>';
         }
     }
     
-    if (sections[5]) {
-        sections[5].querySelector('.section-title').textContent = t.language;
+    // Seção 5: Idioma
+    if (sections.length > 5 && sections[5]) {
+        const sectionTitle = sections[5].querySelector('.section-title');
+        if (sectionTitle) sectionTitle.textContent = t.language;
+        
         const langCodes = sections[5].querySelectorAll('.lang-code');
-        if (langCodes[0]) langCodes[0].textContent = t.lang_pt;
-        if (langCodes[1]) langCodes[1].textContent = t.lang_es;
-        if (langCodes[2]) langCodes[2].textContent = t.lang_en;
+        if (langCodes.length > 0 && langCodes[0]) langCodes[0].textContent = t.lang_pt;
+        if (langCodes.length > 1 && langCodes[1]) langCodes[1].textContent = t.lang_es;
+        if (langCodes.length > 2 && langCodes[2]) langCodes[2].textContent = t.lang_en;
     }
     
-    if (sections[6]) {
-        sections[6].querySelector('.section-title').textContent = t.view_plans;
+    // Seção 6: Ver Planos
+    if (sections.length > 6 && sections[6]) {
+        const sectionTitle = sections[6].querySelector('.section-title');
+        if (sectionTitle) sectionTitle.textContent = t.view_plans;
+        
         const subBtn = sections[6].querySelector('.subscription-btn');
         if (subBtn) subBtn.textContent = t.view_plans_btn;
     }
     
-    // Atualizar modal de assinatura
+    // Atualizar modal de assinatura (com verificações)
     const modal = document.getElementById('subscriptionModal');
     if (modal) {
         const premiumTitle = modal.querySelector('div[style*="font-size: 26px"]');
@@ -1476,18 +1503,18 @@ function updateLanguage(lang) {
         if (premiumSubtitle) premiumSubtitle.textContent = t.premium_subtitle;
         
         const features = modal.querySelectorAll('.feature-item div:last-child');
-        if (features[0]) features[0].textContent = t.feature_4k;
-        if (features[1]) features[1].textContent = t.feature_replay;
-        if (features[2]) features[2].textContent = t.feature_stabilization;
-        if (features[3]) features[3].textContent = t.feature_no_ads;
+        if (features.length > 0 && features[0]) features[0].textContent = t.feature_4k;
+        if (features.length > 1 && features[1]) features[1].textContent = t.feature_replay;
+        if (features.length > 2 && features[2]) features[2].textContent = t.feature_stabilization;
+        if (features.length > 3 && features[3]) features[3].textContent = t.feature_no_ads;
         
         const planTitles = modal.querySelectorAll('.plan-title');
-        if (planTitles[0]) planTitles[0].textContent = t.monthly_plan;
-        if (planTitles[1]) planTitles[1].textContent = t.yearly_plan;
+        if (planTitles.length > 0 && planTitles[0]) planTitles[0].textContent = t.monthly_plan;
+        if (planTitles.length > 1 && planTitles[1]) planTitles[1].textContent = t.yearly_plan;
         
         const planPrices = modal.querySelectorAll('.plan-price');
-        if (planPrices[0]) planPrices[0].textContent = t.monthly_price;
-        if (planPrices[1]) planPrices[1].textContent = t.yearly_price;
+        if (planPrices.length > 0 && planPrices[0]) planPrices[0].textContent = t.monthly_price;
+        if (planPrices.length > 1 && planPrices[1]) planPrices[1].textContent = t.yearly_price;
         
         const saveBadge = modal.querySelector('.save-badge');
         if (saveBadge) saveBadge.textContent = t.yearly_save;
@@ -1511,17 +1538,19 @@ function updateLanguage(lang) {
     });
 }
 
-// Event listeners para botões de idioma
+// Event listeners para botões de idioma (apenas se existirem)
 document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', function() {
         const lang = this.dataset.lang;
-        updateLanguage(lang);
+        if (lang) updateLanguage(lang);
     });
 });
 
-// Inicializar idioma ao carregar
+// Inicializar idioma ao carregar (com delay para garantir que DOM está pronto)
 document.addEventListener('DOMContentLoaded', function() {
-    updateLanguage(currentLang);
+    setTimeout(function() {
+        updateLanguage(currentLang);
+    }, 100);
 });
 // ==================== FIM SISTEMA DE TRADUÇÃO ====================
     </script>
