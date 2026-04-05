@@ -1257,6 +1257,27 @@ function confirmSubscription() {
 function closeModal() {
   document.getElementById('subscriptionModal').style.display = 'none';
 }
+// Função para selecionar idioma
+function selectLanguage(lang) {
+    // Remover classe 'active' de todos os botões
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Adicionar classe 'active' no botão selecionado
+    document.querySelector('.lang-btn[data-lang="' + lang + '"]').classList.add('active');
+    
+    // Salvar idioma no localStorage
+    localStorage.setItem('selectedLanguage', lang);
+    
+    console.log('Idioma selecionado:', lang);
+}
+
+// Carregar idioma salvo ao iniciar
+document.addEventListener('DOMContentLoaded', function() {
+    const savedLang = localStorage.getItem('selectedLanguage') || 'pt';
+    selectLanguage(savedLang);
+});
 </script>
 
                 <!-- Botões de ação - OTIMIZADO PARA MOBILE -->
