@@ -1045,8 +1045,22 @@
   <!-- Container dos planos - MODIFICADO para forçar lado a lado no mobile -->
   <div style="display: flex; justify-content: center; align-items: stretch; gap: 10px; flex-wrap: nowrap; overflow-x: auto; padding: 10px; -webkit-overflow-scrolling: touch;">
     
-    <!-- PLANO MENSAL -->
-    <div style="background: rgba(30, 30, 45, 0.9); border-radius: 20px; padding: 20px; margin: 0; text-align: center; border: 1px solid rgba(255,215,0,0.3); flex: 0 0 auto; width: 160px; min-width: 160px;">
+    <!-- PLANO MENSAL - SELECIONÁVEL -->
+    <div onclick="selectPlan('monthly')" id="plan-monthly" style="
+      background: rgba(30, 30, 45, 0.9); 
+      border-radius: 20px; 
+      padding: 20px; 
+      margin: 0; 
+      text-align: center; 
+      border: 2px solid #FFD700; 
+      flex: 0 0 auto; 
+      width: 160px; 
+      min-width: 160px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      transition: all 0.3s ease;
+    ">
       <div style="font-size: 40px; margin-bottom: 10px; text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);">👑</div>
       <div style="font-size: 18px; font-weight: 800; margin-bottom: 4px; color: #FFD700; line-height: 1.2;">RARO CAM<br>Premium</div>
       <div style="color: #8e8e93; margin-bottom: 12px; font-size: 11px;">Desbloqueie todo o potencial</div>
@@ -1061,19 +1075,7 @@
       <!-- Benefícios -->
       <div style="text-align: left; padding: 0 5px;">
         <div style="display: flex; align-items: center; margin-bottom: 10px; color: #fff; font-size: 12px;">
-          <span style="margin-right: 8px; font-size: 14px;">🎥</span>
-          <span>Gravação em 4K 60fps</span>
-        </div>
-        <div style="display: flex; align-items: center; margin-bottom: 10px; color: #fff; font-size: 12px;">
-          <span style="margin-right: 8px; font-size: 14px;">⏱️</span>
-          <span>Buffer estendido (até 60s)</span>
-        </div>
-        <div style="display: flex; align-items: center; color: #fff; font-size: 12px;">
-          <span style="margin-right: 8px; font-size: 14px;">🚫</span>
-          <span>Sem Anúncios</span>
-        </div>
-      </div>
-    </div>
+          <span style="
     
     <!-- PLANO ANUAL -->
     <div style="background: rgba(30, 30, 45, 0.9); border-radius: 20px; padding: 20px; margin: 0; text-align: center; border: 1px solid rgba(255,215,0,0.3); flex: 0 0 auto; width: 160px; min-width: 160px;">
@@ -1111,17 +1113,76 @@
                 </div>
             </div>
 
-            <!-- Botões de ação -->
-            <button class="subscription-btn" style="background: linear-gradient(135deg, #0a84ff, #0066cc); margin: 0 20px 12px 20px; width: calc(100% - 40px); border-radius: 12px; padding: 16px; font-size: 17px; font-weight: 600;">Assinar agora</button>
-
-            <button style="background: rgba(120, 120, 128, 0.24); color: #fff; border: none; margin: 0 20px 12px 20px; width: calc(100% - 40px); border-radius: 12px; padding: 16px; font-size: 17px; font-weight: 600; cursor: pointer;" onclick="restorePurchases()">Restaurar compras</button>
-
-            <button style="background: rgba(120, 120, 128, 0.24); color: #fff; border: none; margin: 0 20px 20px 20px; width: calc(100% - 40px); border-radius: 12px; padding: 16px; font-size: 17px; font-weight: 600; cursor: pointer;" onclick="closeModal()">Voltar</button>
-
-            <!-- Informação de renovação automática -->
-            <div style="color: #8e8e93; font-size: 12px; text-align: center; padding: 0 30px 20px 30px; line-height: 1.5;">
-                Assinatura mensal com renovação automática.<br>
-                Cancele a qualquer momento nas configurações da App Store.
+                <!-- Botões de ação - OTIMIZADO PARA MOBILE -->
+    <div style="margin-top: 20px; padding: 0 15px; width: 100%; box-sizing: border-box;">
+      
+      <!-- Botão Assinar agora -->
+      <button style="
+        width: 100%;
+        background: linear-gradient(135deg, #007AFF, #0051D5);
+        color: white;
+        border: none;
+        border-radius: 14px;
+        padding: 18px;
+        font-size: 18px;
+        font-weight: 700;
+        cursor: pointer;
+        margin-bottom: 12px;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        min-height: 56px;
+      ">Assinar agora</button>
+      
+      <!-- Botão Restaurar compras -->
+      <button style="
+        width: 100%;
+        background: rgba(255, 255, 255, 0.12);
+        color: white;
+        border: none;
+        border-radius: 14px;
+        padding: 18px;
+        font-size: 17px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-bottom: 12px;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        min-height: 52px;
+      ">Restaurar compras</button>
+      
+      <!-- Botão Voltar -->
+      <button style="
+        width: 100%;
+        background: rgba(255, 255, 255, 0.06);
+        color: white;
+        border: none;
+        border-radius: 14px;
+        padding: 18px;
+        font-size: 17px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-bottom: 24px;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        min-height: 52px;
+      ">Voltar</button>
+      
+      <!-- Texto de assinatura -->
+      <div style="
+        text-align: center;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 12px;
+        line-height: 1.6;
+        padding: 0 10px;
+        margin-bottom: 30px;
+      ">
+        Assinatura mensal com renovação automática.<br>
+        Cancele a qualquer momento nas configurações da App Store.
+      </div>
+    </div>
+    
+  </div>
+</div>
             </div>
 
         </div>
