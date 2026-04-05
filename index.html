@@ -1441,34 +1441,25 @@ function applyTranslations(lang) {
         }
     }
     
-    // RARO Replay
-    const replayTitle = document.querySelector('.settings-section:nth-of-type(5) .section-title');
-    if (replayTitle) replayTitle.textContent = t.raroReplay;
-    
-    // Descrição RARO Replay
-    const replaySections = document.querySelectorAll('.settings-section');
-    replaySections.forEach(section => {
-        const title = section.querySelector('.section-title');
-        if (title && (title.textContent.includes('RARO') || title.textContent.includes('Replay'))) {
-            const desc = section.querySelector('div:not(.section-title)');
-            if (desc && (desc.textContent.includes('Grava') || desc.textContent.includes('Graba') || desc.textContent.includes('Records'))) {
-                desc.textContent = t.replayDesc;
-            }
-        }
-    });
-    
-    // Controle Bluetooth
-    const btSections = document.querySelectorAll('.settings-section');
-    btSections.forEach(section => {
-        const title = section.querySelector('.section-title');
-        if (title && title.textContent.includes('Bluetooth')) {
-            title.textContent = t.bluetooth;
-            const desc = section.querySelector('div:not(.section-title)');
-            if (desc && (desc.textContent.includes('Ativar') || desc.textContent.includes('activar') || desc.textContent.includes('activated'))) {
-                desc.textContent = t.bluetoothDesc;
-            }
-        }
-    });
+        // RARO Replay - 5ª seção (índice 4)
+    const replaySection = document.querySelectorAll('.settings-section')[4];
+    if (replaySection) {
+        const replayTitle = replaySection.querySelector('.section-title');
+        if (replayTitle) replayTitle.textContent = t.raroReplay;
+        
+        const replayDesc = replaySection.querySelector('div:not(.section-title)');
+        if (replayDesc) replayDesc.textContent = t.replayDesc;
+    }
+
+    // Controle Bluetooth - 6ª seção (índice 5)
+    const btSection = document.querySelectorAll('.settings-section')[5];
+    if (btSection) {
+        const btTitle = btSection.querySelector('.section-title');
+        if (btTitle) btTitle.textContent = t.bluetooth;
+        
+        const btDesc = btSection.querySelector('div:not(.section-title)');
+        if (btDesc) btDesc.textContent = t.bluetoothDesc;
+    }
     
     // Botões Voz ativada/desligada
     const voiceSections = document.querySelectorAll('.settings-section');
