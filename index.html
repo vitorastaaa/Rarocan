@@ -954,7 +954,7 @@
                 </div>
 
                 <button class="settings-btn" id="settingsBtn">
-  <img src="RARO_CAM_Completo/settings-icon.png" width="45" height="45" alt="Configurações" style="animation: spin 8s linear infinite;">
+  <img src="RARO_CAM_Completo/settings-icon.png" width="45" height="45" alt= style="animation: spin 8s linear infinite;">
 </button>
             </div>
         </div>
@@ -963,7 +963,64 @@
         <div class="settings-screen" id="settingsScreen">
             <button class="back-btn" id="backBtn">←</button>
 
-            <div class="settings-title">Configurações</div>
+            <div class="settings-title">Configurações</div>    <!-- Seletor de Idiomas -->
+    <div style="display: flex; justify-content: center; align-items: center; gap: 10px; padding: 15px; width: 100%; box-sizing: border-box; margin-bottom: 20px;">
+      
+      <!-- Português (BR) -->
+      <div onclick="selectLanguage('pt')" id="lang-pt" style="
+        background: rgba(30, 30, 45, 0.9);
+        border: 2px solid #FFD700;
+        border-radius: 12px;
+        padding: 12px 20px;
+        text-align: center;
+        cursor: pointer;
+        flex: 1;
+        max-width: 100px;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        transition: all 0.3s ease;
+      ">
+        <div style="font-size: 18px; font-weight: 700; color: #FFD700; line-height: 1;">BR</div>
+        <div style="font-size: 11px; color: #8e8e93; margin-top: 4px; line-height: 1;">PT</div>
+      </div>
+      
+      <!-- Espanhol (ES) -->
+      <div onclick="selectLanguage('es')" id="lang-es" style="
+        background: rgba(30, 30, 45, 0.9);
+        border: 1px solid rgba(255,215,0,0.3);
+        border-radius: 12px;
+        padding: 12px 20px;
+        text-align: center;
+        cursor: pointer;
+        flex: 1;
+        max-width: 100px;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        transition: all 0.3s ease;
+      ">
+        <div style="font-size: 18px; font-weight: 700; color: #FFD700; line-height: 1;">ES</div>
+        <div style="font-size: 11px; color: #8e8e93; margin-top: 4px; line-height: 1;">ES</div>
+      </div>
+      
+      <!-- Inglês (US) -->
+      <div onclick="selectLanguage('en')" id="lang-en" style="
+        background: rgba(30, 30, 45, 0.9);
+        border: 1px solid rgba(255,215,0,0.3);
+        border-radius: 12px;
+        padding: 12px 20px;
+        text-align: center;
+        cursor: pointer;
+        flex: 1;
+        max-width: 100px;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        transition: all 0.3s ease;
+      ">
+        <div style="font-size: 18px; font-weight: 700; color: #FFD700; line-height: 1;">US</div>
+        <div style="font-size: 11px; color: #8e8e93; margin-top: 4px; line-height: 1;">EN</div>
+      </div>
+      
+    </div>
 
             <div class="settings-section">
                 <div class="section-title">Qualidade de Gravação</div>
