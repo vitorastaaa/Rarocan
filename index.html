@@ -1242,6 +1242,288 @@
             }
         `;
         document.head.appendChild(style);
+        
+// ==================== SISTEMA DE TRADUÇÃO ====================
+const translations = {
+    'pt': {
+        'settings_title': 'Configurações',
+        'recording_quality': 'Qualidade de Gravação',
+        'frame_rate': 'Taxa de Quadros',
+        'native_stabilization': 'Estabilização Nativa',
+        'raro_replay': 'RARO Replay',
+        'bluetooth_control': 'Controle Bluetooth',
+        'language': 'Idioma',
+        'view_plans': 'Ver Planos',
+        '720p_hd': '720p HD',
+        '1080p_fullhd': '1080p Full HD',
+        '4k_ultra': '4K Ultra HD',
+        '4k_60fps': '4K 60fps',
+        '30fps': '30 FPS',
+        '30fps_desc': 'Padrão',
+        '60fps': '60 FPS',
+        '60fps_desc': 'Fluido',
+        'on': '● Ligado',
+        'off': '● Desligado',
+        'replay_desc': 'Grava 15 ou 30 segundos antes do comando de voz \'RARO\' ou do botão na tela inicial.',
+        '15s': '15s',
+        '30s': '30s',
+        'bt_desc': 'Ao ativar, o reconhecimento de voz é desativado. A gravação passa a ser controlada pelos botões de volume ou controle Bluetooth.',
+        'bt_off': 'OFF',
+        'bt_off_desc': 'Voz ativada',
+        'bt_on': 'ON',
+        'bt_on_desc': 'Voz desligada',
+        'lang_pt': 'PT',
+        'lang_es': 'ES',
+        'lang_en': 'EN',
+        'view_plans_btn': 'Ver Planos',
+        'premium_title': 'RARO CAM Premium',
+        'premium_subtitle': 'Desbloqueie todo o potencial',
+        'premium_features': 'Recursos Premium',
+        'feature_4k': 'Gravação 4K 60fps',
+        'feature_replay': 'RARO Replay 30s',
+        'feature_stabilization': 'Estabilização avançada',
+        'feature_no_ads': 'Sem anúncios',
+        'monthly_plan': 'Plano Mensal',
+        'monthly_price': 'R$ 9,90/mês',
+        'yearly_plan': 'Plano Anual',
+        'yearly_price': 'R$ 59,90/ano',
+        'yearly_save': 'Economize 50%',
+        'subscribe_btn': 'Assinar Agora',
+        'restore_purchase': 'Restaurar Compra',
+        'terms': 'Ao assinar, você concorda com os Termos de Uso e Política de Privacidade'
+    },
+    'es': {
+        'settings_title': 'Ajustes',
+        'recording_quality': 'Calidad de Grabación',
+        'frame_rate': 'Tasa de Cuadros',
+        'native_stabilization': 'Estabilización Nativa',
+        'raro_replay': 'RARO Replay',
+        'bluetooth_control': 'Control Bluetooth',
+        'language': 'Idioma',
+        'view_plans': 'Ver Planes',
+        '720p_hd': '720p HD',
+        '1080p_fullhd': '1080p Full HD',
+        '4k_ultra': '4K Ultra HD',
+        '4k_60fps': '4K 60fps',
+        '30fps': '30 FPS',
+        '30fps_desc': 'Estándar',
+        '60fps': '60 FPS',
+        '60fps_desc': 'Fluido',
+        'on': '● Activado',
+        'off': '● Desactivado',
+        'replay_desc': 'Graba 15 o 30 segundos antes del comando de voz \'RARO\' o del botón en la pantalla principal.',
+        '15s': '15s',
+        '30s': '30s',
+        'bt_desc': 'Al activar, el reconocimiento de voz se desactiva. La grabación pasa a ser controlada por los botones de volumen o control Bluetooth.',
+        'bt_off': 'OFF',
+        'bt_off_desc': 'Voz activada',
+        'bt_on': 'ON',
+        'bt_on_desc': 'Voz desactivada',
+        'lang_pt': 'PT',
+        'lang_es': 'ES',
+        'lang_en': 'EN',
+        'view_plans_btn': 'Ver Planes',
+        'premium_title': 'RARO CAM Premium',
+        'premium_subtitle': 'Desbloquea todo el potencial',
+        'premium_features': 'Características Premium',
+        'feature_4k': 'Grabación 4K 60fps',
+        'feature_replay': 'RARO Replay 30s',
+        'feature_stabilization': 'Estabilización avanzada',
+        'feature_no_ads': 'Sin anuncios',
+        'monthly_plan': 'Plan Mensual',
+        'monthly_price': '$ 2.99/mes',
+        'yearly_plan': 'Plan Anual',
+        'yearly_price': '$ 19.99/año',
+        'yearly_save': 'Ahorra 44%',
+        'subscribe_btn': 'Suscribirse Ahora',
+        'restore_purchase': 'Restaurar Compra',
+        'terms': 'Al suscribirte, aceptas los Términos de Uso y la Política de Privacidad'
+    },
+    'en': {
+        'settings_title': 'Settings',
+        'recording_quality': 'Recording Quality',
+        'frame_rate': 'Frame Rate',
+        'native_stabilization': 'Native Stabilization',
+        'raro_replay': 'RARO Replay',
+        'bluetooth_control': 'Bluetooth Control',
+        'language': 'Language',
+        'view_plans': 'View Plans',
+        '720p_hd': '720p HD',
+        '1080p_fullhd': '1080p Full HD',
+        '4k_ultra': '4K Ultra HD',
+        '4k_60fps': '4K 60fps',
+        '30fps': '30 FPS',
+        '30fps_desc': 'Standard',
+        '60fps': '60 FPS',
+        '60fps_desc': 'Smooth',
+        'on': '● On',
+        'off': '● Off',
+        'replay_desc': 'Records 15 or 30 seconds before the \'RARO\' voice command or the button on the home screen.',
+        '15s': '15s',
+        '30s': '30s',
+        'bt_desc': 'When activated, voice recognition is disabled. Recording is controlled by volume buttons or Bluetooth control.',
+        'bt_off': 'OFF',
+        'bt_off_desc': 'Voice on',
+        'bt_on': 'ON',
+        'bt_on_desc': 'Voice off',
+        'lang_pt': 'PT',
+        'lang_es': 'ES',
+        'lang_en': 'EN',
+        'view_plans_btn': 'View Plans',
+        'premium_title': 'RARO CAM Premium',
+        'premium_subtitle': 'Unlock full potential',
+        'premium_features': 'Premium Features',
+        'feature_4k': '4K 60fps Recording',
+        'feature_replay': 'RARO Replay 30s',
+        'feature_stabilization': 'Advanced stabilization',
+        'feature_no_ads': 'No ads',
+        'monthly_plan': 'Monthly Plan',
+        'monthly_price': '$ 2.99/month',
+        'yearly_plan': 'Yearly Plan',
+        'yearly_price': '$ 19.99/year',
+        'yearly_save': 'Save 44%',
+        'subscribe_btn': 'Subscribe Now',
+        'restore_purchase': 'Restore Purchase',
+        'terms': 'By subscribing, you agree to the Terms of Use and Privacy Policy'
+    }
+};
+
+let currentLang = localStorage.getItem('raroCamLanguage') || 'pt';
+
+function updateLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('raroCamLanguage', lang);
+    const t = translations[lang];
+    
+    // Atualizar título
+    const titleEl = document.querySelector('.settings-title');
+    if (titleEl) titleEl.textContent = t.settings_title;
+    
+    // Atualizar seções
+    const sections = document.querySelectorAll('.settings-section');
+    if (sections[0]) {
+        sections[0].querySelector('.section-title').textContent = t.recording_quality;
+        const resBtns = sections[0].querySelectorAll('.res-btn');
+        if (resBtns[0]) resBtns[0].textContent = t['720p_hd'];
+        if (resBtns[1]) resBtns[1].textContent = t['1080p_fullhd'];
+        if (resBtns[2]) resBtns[2].textContent = t['4k_ultra'];
+        if (resBtns[3]) resBtns[3].textContent = t['4k_60fps'];
+    }
+    
+    if (sections[1]) {
+        sections[1].querySelector('.section-title').textContent = t.frame_rate;
+        const toggleBtns = sections[1].querySelectorAll('.toggle-btn');
+        if (toggleBtns[0]) {
+            toggleBtns[0].innerHTML = t['30fps'] + '<br><small>' + t['30fps_desc'] + '</small>';
+        }
+        if (toggleBtns[1]) {
+            toggleBtns[1].innerHTML = t['60fps'] + '<br><small>' + t['60fps_desc'] + '</small>';
+        }
+    }
+    
+    if (sections[2]) {
+        sections[2].querySelector('.section-title').textContent = t.native_stabilization;
+        const optionValue = sections[2].querySelector('.option-value');
+        if (optionValue) {
+            const isOn = optionValue.textContent.includes('●') && !optionValue.textContent.includes('Desligado') && !optionValue.textContent.includes('Off');
+            optionValue.textContent = isOn ? t.on : t.off;
+        }
+    }
+    
+    if (sections[3]) {
+        sections[3].querySelector('.section-title').textContent = t.raro_replay;
+        const desc = sections[3].querySelector('div[style*="color: #8e8e93"]');
+        if (desc) desc.textContent = t.replay_desc;
+        const replayBtns = sections[3].querySelectorAll('.toggle-btn');
+        if (replayBtns[0]) replayBtns[0].textContent = t['15s'];
+        if (replayBtns[1]) replayBtns[1].textContent = t['30s'];
+    }
+    
+    if (sections[4]) {
+        sections[4].querySelector('.section-title').textContent = t.bluetooth_control;
+        const desc = sections[4].querySelector('div[style*="color: #8e8e93"]');
+        if (desc) desc.textContent = t.bt_desc;
+        const btns = sections[4].querySelectorAll('.toggle-btn');
+        if (btns[0]) {
+            btns[0].innerHTML = t.bt_off + '<br><small>' + t.bt_off_desc + '</small>';
+        }
+        if (btns[1]) {
+            btns[1].innerHTML = t.bt_on + '<br><small>' + t.bt_on_desc + '</small>';
+        }
+    }
+    
+    if (sections[5]) {
+        sections[5].querySelector('.section-title').textContent = t.language;
+        const langCodes = sections[5].querySelectorAll('.lang-code');
+        if (langCodes[0]) langCodes[0].textContent = t.lang_pt;
+        if (langCodes[1]) langCodes[1].textContent = t.lang_es;
+        if (langCodes[2]) langCodes[2].textContent = t.lang_en;
+    }
+    
+    if (sections[6]) {
+        sections[6].querySelector('.section-title').textContent = t.view_plans;
+        const subBtn = sections[6].querySelector('.subscription-btn');
+        if (subBtn) subBtn.textContent = t.view_plans_btn;
+    }
+    
+    // Atualizar modal de assinatura
+    const modal = document.getElementById('subscriptionModal');
+    if (modal) {
+        const premiumTitle = modal.querySelector('div[style*="font-size: 26px"]');
+        if (premiumTitle) premiumTitle.textContent = t.premium_title;
+        
+        const premiumSubtitle = modal.querySelector('div[style*="color: #8e8e93"]');
+        if (premiumSubtitle) premiumSubtitle.textContent = t.premium_subtitle;
+        
+        const features = modal.querySelectorAll('.feature-item div:last-child');
+        if (features[0]) features[0].textContent = t.feature_4k;
+        if (features[1]) features[1].textContent = t.feature_replay;
+        if (features[2]) features[2].textContent = t.feature_stabilization;
+        if (features[3]) features[3].textContent = t.feature_no_ads;
+        
+        const planTitles = modal.querySelectorAll('.plan-title');
+        if (planTitles[0]) planTitles[0].textContent = t.monthly_plan;
+        if (planTitles[1]) planTitles[1].textContent = t.yearly_plan;
+        
+        const planPrices = modal.querySelectorAll('.plan-price');
+        if (planPrices[0]) planPrices[0].textContent = t.monthly_price;
+        if (planPrices[1]) planPrices[1].textContent = t.yearly_price;
+        
+        const saveBadge = modal.querySelector('.save-badge');
+        if (saveBadge) saveBadge.textContent = t.yearly_save;
+        
+        const subBtn = modal.querySelector('.subscribe-btn');
+        if (subBtn) subBtn.textContent = t.subscribe_btn;
+        
+        const restoreLink = modal.querySelector('.restore-link');
+        if (restoreLink) restoreLink.textContent = t.restore_purchase;
+        
+        const terms = modal.querySelector('.terms-text');
+        if (terms) terms.textContent = t.terms;
+    }
+    
+    // Atualizar botões de idioma ativo
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.lang === lang) {
+            btn.classList.add('active');
+        }
+    });
+}
+
+// Event listeners para botões de idioma
+document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const lang = this.dataset.lang;
+        updateLanguage(lang);
+    });
+});
+
+// Inicializar idioma ao carregar
+document.addEventListener('DOMContentLoaded', function() {
+    updateLanguage(currentLang);
+});
+// ==================== FIM SISTEMA DE TRADUÇÃO ====================
     </script>
 </body>
 </html>
