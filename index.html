@@ -1270,7 +1270,167 @@ function selectLanguage(lang) {
     // Salvar idioma no localStorage
     localStorage.setItem('selectedLanguage', lang);
     
+    // Aplicar traduções
+    applyTranslations(lang);
+    
     console.log('Idioma selecionado:', lang);
+}
+
+// Objeto com traduções
+const translations = {
+    pt: {
+        settingsTitle: "Configurações",
+        qualityTitle: "Qualidade de Gravação",
+        fpsTitle: "Taxa de Quadros",
+        stabilization: "Estabilização Nativa",
+        on: "Ligado",
+        off: "Desligado",
+        raroReplay: "RARO Replay",
+        replayDesc: "Grava 15 ou 30 segundos antes do comando de voz 'RARO' ou do botão na tela inicial.",
+        bluetooth: "Controle Bluetooth",
+        bluetoothDesc: "Ao ativar, o reconhecimento de voz é desativado. A gravação passa a ser controlada pelos botões de volume ou controle Bluetooth.",
+        voiceOn: "Voz ativada",
+        voiceOff: "Voz desligada",
+        plans: "Ver Planos",
+        monthly: "Mensal",
+        annual: "Anual",
+        unlock: "Desbloqueie todo o potencial",
+        record4k: "Gravação em 4K 60fps",
+        extendedBuffer: "Buffer estendido (até 60s)",
+        noAds: "Sem Anúncios",
+        selected: "Selecionado",
+        subscribe: "Assinar agora",
+        restore: "Restaurar compras",
+        cancelInfo: "Assinatura mensal com renovação automática. Cancele a qualquer momento nas configurações da App Store.",
+        warning: "Aviso",
+        warningText: "O RARO não grava em segundo plano. Se minimizar, feche-o completamente.",
+        lockInfo: "Para bloquear a gravação, utilize o botão LOCK.",
+        avoidButton: "Evite o botão lateral do celular.",
+        useLock: "Não bloqueie pelo botão lateral. Use o LOCK.",
+        cameraActive: "Câmera Ativa",
+        replayActive: "Replay Ativo",
+        voiceActive: "Voz Ativa",
+        raroActive: "RARO Ativo",
+        premium: "Premium",
+        freeDays: "15 dias grátis",
+        after: "Após isso será cobrado!"
+    },
+    es: {
+        settingsTitle: "Configuración",
+        qualityTitle: "Calidad de Grabación",
+        fpsTitle: "Tasa de Cuadros",
+        stabilization: "Estabilización Nativa",
+        on: "Encendido",
+        off: "Apagado",
+        raroReplay: "RARO Replay",
+        replayDesc: "Graba 15 o 30 segundos antes del comando de voz 'RARO' o del botón en la pantalla inicial.",
+        bluetooth: "Control Bluetooth",
+        bluetoothDesc: "Al activar, el reconocimiento de voz se desactiva. La grabación pasa a ser controlada por los botones de volumen o control Bluetooth.",
+        voiceOn: "Voz activada",
+        voiceOff: "Voz desactivada",
+        plans: "Ver Planes",
+        monthly: "Mensual",
+        annual: "Anual",
+        unlock: "Desbloquea todo el potencial",
+        record4k: "Grabación en 4K 60fps",
+        extendedBuffer: "Buffer extendido (hasta 60s)",
+        noAds: "Sin Anuncios",
+        selected: "Seleccionado",
+        subscribe: "Suscribirse",
+        restore: "Restaurar compras",
+        cancelInfo: "Suscripción mensual con renovación automática. Cancele en cualquier momento en la configuración de la App Store.",
+        warning: "Advertencia",
+        warningText: "RARO no graba en segundo plano. Si minimiza, ciérrelo completamente.",
+        lockInfo: "Para bloquear la grabación, utilice el botón LOCK.",
+        avoidButton: "Evite el botón lateral del celular.",
+        useLock: "No bloquee por el botón lateral. Use el LOCK.",
+        cameraActive: "Cámara Activa",
+        replayActive: "Replay Activo",
+        voiceActive: "Voz Activa",
+        raroActive: "RARO Activo",
+        premium: "Premium",
+        freeDays: "15 días gratis",
+        after: "¡Después se cobrará!"
+    },
+    en: {
+        settingsTitle: "Settings",
+        qualityTitle: "Recording Quality",
+        fpsTitle: "Frame Rate",
+        stabilization: "Native Stabilization",
+        on: "On",
+        off: "Off",
+        raroReplay: "RARO Replay",
+        replayDesc: "Records 15 or 30 seconds before the voice command 'RARO' or the button on the home screen.",
+        bluetooth: "Bluetooth Control",
+        bluetoothDesc: "When activated, voice recognition is disabled. Recording is controlled by volume buttons or Bluetooth control.",
+        voiceOn: "Voice on",
+        voiceOff: "Voice off",
+        plans: "View Plans",
+        monthly: "Monthly",
+        annual: "Annual",
+        unlock: "Unlock full potential",
+        record4k: "4K 60fps Recording",
+        extendedBuffer: "Extended buffer (up to 60s)",
+        noAds: "No Ads",
+        selected: "Selected",
+        subscribe: "Subscribe now",
+        restore: "Restore purchases",
+        cancelInfo: "Monthly subscription with automatic renewal. Cancel anytime in App Store settings.",
+        warning: "Warning",
+        warningText: "RARO does not record in background. If minimized, close it completely.",
+        lockInfo: "To lock recording, use the LOCK button.",
+        avoidButton: "Avoid the phone side button.",
+        useLock: "Don't lock with side button. Use LOCK.",
+        cameraActive: "Camera Active",
+        replayActive: "Replay Active",
+        voiceActive: "Voice Active",
+        raroActive: "RARO Active",
+        premium: "Premium",
+        freeDays: "15 days free",
+        after: "After that you will be charged!"
+    }
+};
+
+// Função para aplicar traduções
+function applyTranslations(lang) {
+    const t = translations[lang] || translations.pt;
+    
+    // Configurações
+    const settingsTitle = document.querySelector('.settings-title');
+    if (settingsTitle) settingsTitle.textContent = t.settingsTitle;
+    
+    // Seções
+    const sectionTitles = document.querySelectorAll('.section-title');
+    sectionTitles.forEach(title => {
+        const text = title.textContent;
+        if (text.includes('Qualidade') || text.includes('Calidad') || text.includes('Quality')) title.textContent = t.qualityTitle;
+        if (text.includes('Taxa') || text.includes('Tasa') || text.includes('Frame')) title.textContent = t.fpsTitle;
+        if (text.includes('Estabilização') || text.includes('Estabilización') || text.includes('Stabilization')) title.textContent = t.stabilization;
+        if (text.includes('Idioma')) title.textContent = 'Idioma'; // Idioma não muda
+        if (text.includes('Planos') || text.includes('Planes') || text.includes('Plans')) title.textContent = t.plans;
+    });
+    
+    // Botões toggle
+    const toggleBtns = document.querySelectorAll('.toggle-btn');
+    toggleBtns.forEach(btn => {
+        const text = btn.innerHTML;
+        if (text.includes('Ligado') || text.includes('Encendido') || text.includes('On')) {
+            btn.innerHTML = btn.innerHTML.replace(/Ligado|Encendido|On/g, t.on);
+        }
+        if (text.includes('Desligado') || text.includes('Apagado') || text.includes('Off')) {
+            btn.innerHTML = btn.innerHTML.replace(/Desligado|Apagado|Off/g, t.off);
+        }
+    });
+    
+    // Descrições RARO Replay
+    const replayTitle = document.querySelector('.settings-section:nth-child(2) .section-title');
+    if (replayTitle) replayTitle.textContent = t.raroReplay;
+    
+    // Controle Bluetooth
+    const btTitle = document.querySelector('.settings-section:nth-child(3) .section-title');
+    if (btTitle) btTitle.textContent = t.bluetooth;
+    
+    console.log('Traduções aplicadas:', lang);
 }
 
 // Carregar idioma salvo ao iniciar
