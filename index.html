@@ -856,6 +856,87 @@
 }
 }
 </style>
+    /* ============ SEÇÃO IDIOMA ============ */
+.language-section {
+    background: rgba(25, 30, 45, 0.8);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+}
+
+.language-section .section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 10px;
+}
+
+.language-section .section-icon {
+    font-size: 20px;
+}
+
+.language-section .section-title {
+    font-size: 13px;
+    color: #8e8e93;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.language-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.lang-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 10px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(35, 40, 55, 0.8);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.lang-btn:hover {
+    background: rgba(50, 55, 70, 0.9);
+    transform: translateY(-2px);
+}
+
+.lang-btn.active {
+    background: rgba(10, 132, 255, 0.2);
+    border-color: #0a84ff;
+    box-shadow: 0 0 20px rgba(10, 132, 255, 0.3);
+}
+
+.lang-flag {
+    font-size: 32px;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.lang-code {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.lang-btn.active .lang-code {
+    color: #0a84ff;
+}
+
+.lang-name {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+}
 <base target="_blank">
 </head>
 <body>
@@ -967,7 +1048,7 @@
             <div class="settings-title">Configurações</div>
 
             <div class="settings-section">
-                <div class="section-title">Qualidade de Gravação</div>
+                <div class="section-title" data-i18n="quality">Qualidade de Gravação</div>
                 <div class="resolution-grid">
                     <button class="res-btn" data-res="720">720p HD</button>
                     <button class="res-btn active" data-res="1080">1080p Full HD</button>
@@ -977,7 +1058,7 @@
             </div>
 
             <div class="settings-section">
-                <div class="section-title">Taxa de Quadros</div>
+                <div class="section-title" data-i18n="fps">Taxa de Quadros</div>
                 <div class="toggle-group">
                     <button class="toggle-btn active" data-fps="30">30 FPS<br><small>Padrão</small></button>
                     <button class="toggle-btn" data-fps="60">60 FPS<br><small>Fluido</small></button>
@@ -986,12 +1067,36 @@
 
             <div class="settings-section">
                 <div class="option-row">
-                    <span class="option-label">Estabilização Nativa</span>
+                    <span class="option-label" data-i18n="stabilization">Estabilização Nativa</span>
                     <span class="option-value" style="color: #34c759;">● Ligado</span>
                 </div>
-            </div>
-
-            <div class="settings-section">
+            <!-- SEÇÃO IDIOMA -->
+<div class="settings-section language-section">
+    <div class="section-header">
+        <span class="section-icon">🌐</span>
+        <span class="section-title" data-i18n="language">IDIOMA</span>
+    </div>
+    
+    <div class="language-grid">
+        <button class="lang-btn active" data-lang="pt" onclick="selectLanguage('pt')">
+            <span class="lang-flag">🇧🇷</span>
+            <span class="lang-code">PT</span>
+            <span class="lang-name">Português</span>
+        </button>
+        
+        <button class="lang-btn" data-lang="es" onclick="selectLanguage('es')">
+            <span class="lang-flag">🇪🇸</span>
+            <span class="lang-code">ES</span>
+            <span class="lang-name">Español</span>
+        </button>
+        
+        <button class="lang-btn" data-lang="en" onclick="selectLanguage('en')">
+            <span class="lang-flag">🇺🇸</span>
+            <span class="lang-code">EN</span>
+            <span class="lang-name">English</span>
+        </button>
+    </div>
+</div>
                 <div class="section-title">RARO Replay</div>
                 <div style="font-size: 14px; color: #8e8e93; margin-bottom: 12px; line-height: 1.4;">
                     Grava 15 ou 30 segundos antes do comando de voz 'RARO' ou do botão na tela inicial.
@@ -1002,8 +1107,8 @@
                 </div>
             </div>
 
-            <div class="settings-section">
-                <div class="section-title">Controle Bluetooth</div>
+            <div class="section-title" data-i18n="raroReplay">RARO Replay</div>
+                <div class="section-title" data-i18n="bluetooth">Controle Bluetooth</div>
                 <div style="font-size: 13px; color: #8e8e93; margin-bottom: 12px; line-height: 1.5;">
                     Ao ativar, o reconhecimento de voz é desativado. A gravação passa a ser controlada pelos botões de volume ou controle Bluetooth.
                 </div>
@@ -1243,5 +1348,127 @@
         `;
         document.head.appendChild(style);
     </script>
+    // ============ SISTEMA DE IDIOMAS ============
+
+const translations = {
+    pt: {
+        language: "IDIOMA",
+        quality: "Qualidade de Gravação",
+        fps: "Taxa de Quadros",
+        stabilization: "Estabilização Nativa",
+        raroReplay: "RARO REPLAY",
+        bluetooth: "CONTROLE BLUETOOTH",
+        plans: "VER PLANOS",
+        quality720p: "720p HD",
+        quality1080p: "1080p Full HD",
+        quality4k: "4K Ultra HD",
+        quality4k60: "4K 60fps",
+        fps30: "30 FPS",
+        fps30Label: "Padrão",
+        fps60: "60 FPS",
+        fps60Label: "Fluido",
+        stabilizationOn: "Ligado",
+        stabilizationOff: "Desligado",
+        replay15s: "15 s",
+        replay30s: "30 s",
+        replayDescription: "Grava 15 ou 30 segundos antes do comando de voz \"RARO\" ou do botão na tela principal.",
+        bluetoothOff: "OFF",
+        bluetoothOn: "ON",
+        bluetoothVoiceOn: "Voz ativada",
+        bluetoothVoiceOff: "Voz desativada",
+        bluetoothDescription: "Ao ativar, o reconhecimento de voz é desativado. A gravação passa a ser controlada pelos botões de volume ou um controle Bluetooth.",
+        viewPlans: "Ver Planes"
+    },
+    
+    es: {
+        language: "IDIOMA",
+        quality: "Calidad de Grabación",
+        fps: "Tasa de Fotogramas",
+        stabilization: "Estabilización Nativa",
+        raroReplay: "RARE Replay",
+        bluetooth: "Control Bluetooth",
+        plans: "VER PLANES",
+        quality720p: "720p HD",
+        quality1080p: "1080p Full HD",
+        quality4k: "4K Ultra HD",
+        quality4k60: "4K 60fps",
+        fps30: "30 FPS",
+        fps30Label: "Estándar",
+        fps60: "60 FPS",
+        fps60Label: "Fluido",
+        stabilizationOn: "Activado",
+        stabilizationOff: "Desactivado",
+        replay15s: "15 s",
+        replay30s: "30 s",
+        replayDescription: "Graba 15 o 30 segundos antes del comando de voz \"RARE\" o del botón en la pantalla principal.",
+        bluetoothOff: "OFF",
+        bluetoothOn: "ON",
+        bluetoothVoiceOn: "Voz activada",
+        bluetoothVoiceOff: "Voz desactivada",
+        bluetoothDescription: "Al activarlo, el reconocimiento de voz se desactiva. La grabación pasa a ser controlada por los botones de volumen o un control Bluetooth.",
+        viewPlans: "Ver Planes"
+    },
+    
+    en: {
+        language: "LANGUAGE",
+        quality: "Recording Quality",
+        fps: "Frame Rate",
+        stabilization: "Native Stabilization",
+        raroReplay: "RARE Replay",
+        bluetooth: "Bluetooth Control",
+        plans: "VIEW PLANS",
+        quality720p: "720p HD",
+        quality1080p: "1080p Full HD",
+        quality4k: "4K Ultra HD",
+        quality4k60: "4K 60fps",
+        fps30: "30 FPS",
+        fps30Label: "Standard",
+        fps60: "60 FPS",
+        fps60Label: "Smooth",
+        stabilizationOn: "Enabled",
+        stabilizationOff: "Disabled",
+        replay15s: "15s",
+        replay30s: "30s",
+        replayDescription: "Records 15 or 30 seconds before the voice command \"RARE\" or the button on the home screen.",
+        bluetoothOff: "OFF",
+        bluetoothOn: "ON",
+        bluetoothVoiceOn: "Voice Enabled",
+        bluetoothVoiceOff: "Voice Disabled",
+        bluetoothDescription: "When activated, voice recognition is disabled. Recording will be controlled using the volume buttons or a Bluetooth remote.",
+        viewPlans: "View Plans"
+    }
+};
+
+function selectLanguage(lang) {
+    localStorage.setItem('raro-language', lang);
+    
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    const selectedBtn = document.querySelector(`.lang-btn[data-lang="${lang}"]`);
+    if (selectedBtn) selectedBtn.classList.add('active');
+    
+    applyTranslations(lang);
+}
+
+function applyTranslations(lang) {
+    const texts = translations[lang];
+    if (!texts) return;
+    
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (texts[key]) {
+            element.textContent = texts[key];
+        }
+    });
+}
+
+function loadSavedLanguage() {
+    const savedLang = localStorage.getItem('raro-language') || 'pt';
+    selectLanguage(savedLang);
+}
+
+document.addEventListener('DOMContentLoaded', loadSavedLanguage);
 </body>
 </html>
