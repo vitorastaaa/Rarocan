@@ -1392,46 +1392,149 @@ const translations = {
 };
 
 // Função para aplicar traduções
+const translations = {
+    pt: {
+        settingsTitle: "Configurações",
+        qualityTitle: "Qualidade de Gravação",
+        fpsTitle: "Taxa de Quadros",
+        standard: "Padrão",
+        smooth: "Fluido",
+        stabilization: "Estabilização Nativa",
+        on: "Ligado",
+        off: "Desligado",
+        raroReplay: "RARO Replay",
+        replayDesc: "Grava 15 ou 30 segundos antes do comando de voz 'RARO' ou do botão na tela inicial.",
+        bluetooth: "Controle Bluetooth",
+        bluetoothDesc: "Ao ativar, o reconhecimento de voz é desativado. A gravação passa a ser controlada pelos botões de volume ou controle Bluetooth.",
+        voiceOn: "Voz ativada",
+        voiceOff: "Voz desligada",
+        plans: "Ver Planos",
+        // ... resto das traduções
+    },
+    es: {
+        settingsTitle: "Configuración",
+        qualityTitle: "Calidad de Grabación",
+        fpsTitle: "Tasa de Cuadros",
+        standard: "Estándar",
+        smooth: "Fluido",
+        stabilization: "Estabilización Nativa",
+        on: "Encendido",
+        off: "Apagado",
+        raroReplay: "RARO Replay",
+        replayDesc: "Graba 15 o 30 segundos antes del comando de voz 'RARO' o del botón en la pantalla inicial.",
+        bluetooth: "Control Bluetooth",
+        bluetoothDesc: "Al activar, el reconocimiento de voz se desactiva. La grabación pasa a ser controlada por los botones de volumen o control Bluetooth.",
+        voiceOn: "Voz activada",
+        voiceOff: "Voz desactivada",
+        plans: "Ver Planes",
+        // ... resto das traduções
+    },
+    en: {
+        settingsTitle: "Settings",
+        qualityTitle: "Recording Quality",
+        fpsTitle: "Frame Rate",
+        standard: "Standard",
+        smooth: "Smooth",
+        stabilization: "Native Stabilization",
+        on: "On",
+        off: "Off",
+        raroReplay: "RARO Replay",
+        replayDesc: "Records 15 or 30 seconds before the voice command 'RARO' or the button on the home screen.",
+        bluetooth: "Bluetooth Control",
+        bluetoothDesc: "When activated, voice recognition is disabled. Recording is controlled by volume buttons or Bluetooth control.",
+        voiceOn: "Voice on",
+        voiceOff: "Voice off",
+        plans: "View Plans",
+        // ... resto das traduções
+    }
+};
+    
+// Função para aplicar traduções
 function applyTranslations(lang) {
     const t = translations[lang] || translations.pt;
     
-    // Configurações
+    // Título Configurações
     const settingsTitle = document.querySelector('.settings-title');
     if (settingsTitle) settingsTitle.textContent = t.settingsTitle;
     
-    // Seções
-    const sectionTitles = document.querySelectorAll('.section-title');
-    sectionTitles.forEach(title => {
-        const text = title.textContent;
-        if (text.includes('Qualidade') || text.includes('Calidad') || text.includes('Quality')) title.textContent = t.qualityTitle;
-        if (text.includes('Taxa') || text.includes('Tasa') || text.includes('Frame')) title.textContent = t.fpsTitle;
-        if (text.includes('Estabilização') || text.includes('Estabilización') || text.includes('Stabilization')) title.textContent = t.stabilization;
-        if (text.includes('Idioma')) title.textContent = 'Idioma'; // Idioma não muda
-        if (text.includes('Planos') || text.includes('Planes') || text.includes('Plans')) title.textContent = t.plans;
-    });
+    // Seção Qualidade de Gravação
+    const qualityTitle = document.querySelector('.settings-section:nth-of-type(1) .section-title');
+    if (qualityTitle) qualityTitle.textContent = t.qualityTitle;
     
-    // Botões toggle
-    const toggleBtns = document.querySelectorAll('.toggle-btn');
-    toggleBtns.forEach(btn => {
-        const text = btn.innerHTML;
-        if (text.includes('Ligado') || text.includes('Encendido') || text.includes('On')) {
-            btn.innerHTML = btn.innerHTML.replace(/Ligado|Encendido|On/g, t.on);
+    // Seção Taxa de Quadros
+    const fpsTitle = document.querySelector('.settings-section:nth-of-type(2) .section-title');
+    if (fpsTitle) fpsTitle.textContent = t.fpsTitle;
+    
+    // Botões Padrão/Fluido
+    const toggleBtns = document.querySelectorAll('.toggle-btn small');
+    toggleBtns.forEach(small => {
+        const text = small.textContent;
+        if (text === 'Padrão' || text === 'Estándar' || text === 'Standard') {
+            small.textContent = t.standard;
         }
-        if (text.includes('Desligado') || text.includes('Apagado') || text.includes('Off')) {
-            btn.innerHTML = btn.innerHTML.replace(/Desligado|Apagado|Off/g, t.off);
+        if (text === 'Fluido' || text === 'Fluido' || text === 'Smooth') {
+            small.textContent = t.smooth;
         }
     });
     
-    // Descrições RARO Replay
-    const replayTitle = document.querySelector('.settings-section:nth-child(2) .section-title');
+    // Estabilização Nativa
+    const stabLabel = document.querySelector('.option-label');
+    if (stabLabel) stabLabel.textContent = t.stabilization;
+    
+    // Ligado/Desligado
+    const stabValue = document.querySelector('.option-value');
+    if (stabValue) {
+        const text = stabValue.textContent;
+        if (text === 'Ligado' || text === 'Encendido' || text === 'On') {
+            stabValue.textContent = t.on;
+        }
+        if (text === 'Desligado' || text === 'Apagado' || text === 'Off') {
+            stabValue.textContent = t.off;
+        }
+    }
+    
+    // RARO Replay
+    const replayTitle = document.querySelector('.settings-section:nth-of-type(5) .section-title');
     if (replayTitle) replayTitle.textContent = t.raroReplay;
     
-    // Controle Bluetooth
-    const btTitle = document.querySelector('.settings-section:nth-child(3) .section-title');
-    if (btTitle) btTitle.textContent = t.bluetooth;
+    // Descrição RARO Replay
+    const replaySections = document.querySelectorAll('.settings-section');
+    replaySections.forEach(section => {
+        const title = section.querySelector('.section-title');
+        if (title && (title.textContent.includes('RARO') || title.textContent.includes('Replay'))) {
+            const desc = section.querySelector('div:not(.section-title)');
+            if (desc && desc.textContent.includes('Grava') || desc.textContent.includes('Graba') || desc.textContent.includes('Records')) {
+                desc.textContent = t.replayDesc;
+            }
+        }
+    });
     
-    console.log('Traduções aplicadas:', lang);
-}
+    // Controle Bluetooth
+    const btSections = document.querySelectorAll('.settings-section');
+    btSections.forEach(section => {
+        const title = section.querySelector('.section-title');
+        if (title && (title.textContent.includes('Bluetooth') || title.textContent.includes('Bluetooth'))) {
+            title.textContent = t.bluetooth;
+            const desc = section.querySelector('div:not(.section-title)');
+            if (desc && (desc.textContent.includes('Ativar') || desc.textContent.includes('activar') || desc.textContent.includes('activated'))) {
+                desc.textContent = t.bluetoothDesc;
+            }
+        }
+    });
+    
+    // Botões Voz ativada/desligada
+    const voiceSections = document.querySelectorAll('.settings-section');
+    voiceSections.forEach(section => {
+        const title = section.querySelector('.section-title');
+        if (title && title.textContent.includes('Bluetooth')) {
+            const btns = section.querySelectorAll('.toggle-btn small');
+            btns.forEach(small => {
+                const text = small.textContent;
+                if (text.includes('ativada') || text.includes('activada') || text.includes('on')) {
+                    small.textContent = t.voiceOn;
+                }
+                if (text.includes('desligada') || text.includes('desactivada') || text.includes('off')) {
+                    small.textContent = t.voiceOff;
 
 // Carregar idioma salvo ao iniciar
 document.addEventListener('DOMContentLoaded', function() {
