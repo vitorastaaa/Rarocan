@@ -1042,64 +1042,64 @@
 <div class="subscription-modal" id="subscriptionModal">
   <button class="close-modal" id="closeModal">×</button>
   
-  <!-- Container dos planos - MODIFICADO para flex -->
-  <div style="display: flex; justify-content: center; align-items: stretch; gap: 20px; flex-wrap: wrap;">
+  <!-- Container dos planos - MODIFICADO para forçar lado a lado no mobile -->
+  <div style="display: flex; justify-content: center; align-items: stretch; gap: 10px; flex-wrap: nowrap; overflow-x: auto; padding: 10px; -webkit-overflow-scrolling: touch;">
     
-    <!-- PLANO MENSAL (existente) -->
-    <div style="background: rgba(30, 30, 45, 0.9); border-radius: 20px; padding: 30px; margin: 0; text-align: center; border: 1px solid rgba(255,215,0,0.3); flex: 1; max-width: 280px; min-width: 260px;">
-      <div style="font-size: 50px; margin-bottom: 15px; text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);">👑</div>
-      <div style="font-size: 26px; font-weight: 800; margin-bottom: 8px; color: #FFD700;">RARO CAM Premium</div>
-      <div style="color: #8e8e93; margin-bottom: 20px; font-size: 14px;">Desbloqueie todo o potencial</div>
-      <div style="font-size: 42px; font-weight: 700; margin-bottom: 10px; color: #fff;">R$ 9,90<span style="font-size: 16px; color: #8e8e93; font-weight: 400;">/mês</span></div>
+    <!-- PLANO MENSAL -->
+    <div style="background: rgba(30, 30, 45, 0.9); border-radius: 20px; padding: 20px; margin: 0; text-align: center; border: 1px solid rgba(255,215,0,0.3); flex: 0 0 auto; width: 160px; min-width: 160px;">
+      <div style="font-size: 40px; margin-bottom: 10px; text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);">👑</div>
+      <div style="font-size: 18px; font-weight: 800; margin-bottom: 4px; color: #FFD700; line-height: 1.2;">RARO CAM<br>Premium</div>
+      <div style="color: #8e8e93; margin-bottom: 12px; font-size: 11px;">Desbloqueie todo o potencial</div>
+      <div style="font-size: 28px; font-weight: 700; margin-bottom: 6px; color: #fff;">R$ 9,90<span style="font-size: 12px; color: #8e8e93; font-weight: 400;">/mês</span></div>
       
       <!-- Banner 15 dias grátis -->
-      <div style="background: rgba(255, 215, 0, 0.15); border-radius: 10px; padding: 12px; margin-bottom: 25px; border: 1px solid rgba(255, 215, 0, 0.3);">
-        <div style="color: #FFD700; font-size: 14px; font-weight: 600;">✨ 15 dias grátis</div>
-        <div style="color: #FFD700; font-size: 13px; margin-top: 3px;">Após isso será cobrado!</div>
+      <div style="background: rgba(255, 215, 0, 0.15); border-radius: 8px; padding: 8px; margin-bottom: 15px; border: 1px solid rgba(255, 215, 0, 0.3);">
+        <div style="color: #FFD700; font-size: 11px; font-weight: 600;">✨ 15 dias grátis</div>
+        <div style="color: #FFD700; font-size: 10px; margin-top: 2px;">Após isso será cobrado!</div>
       </div>
       
-      <!-- Apenas 3 itens solicitados -->
-      <div style="text-align: left; padding: 0 10px;">
-        <div style="display: flex; align-items: center; margin-bottom: 16px; color: #fff; font-size: 16px;">
-          <span style="margin-right: 12px; font-size: 20px;">🎥</span>
+      <!-- Benefícios -->
+      <div style="text-align: left; padding: 0 5px;">
+        <div style="display: flex; align-items: center; margin-bottom: 10px; color: #fff; font-size: 12px;">
+          <span style="margin-right: 8px; font-size: 14px;">🎥</span>
           <span>Gravação em 4K 60fps</span>
         </div>
-        <div style="display: flex; align-items: center; margin-bottom: 16px; color: #fff; font-size: 16px;">
-          <span style="margin-right: 12px; font-size: 20px;">⏱️</span>
+        <div style="display: flex; align-items: center; margin-bottom: 10px; color: #fff; font-size: 12px;">
+          <span style="margin-right: 8px; font-size: 14px;">⏱️</span>
           <span>Buffer estendido (até 60s)</span>
         </div>
-        <div style="display: flex; align-items: center; color: #fff; font-size: 16px;">
-          <span style="margin-right: 12px; font-size: 20px;">🚫</span>
+        <div style="display: flex; align-items: center; color: #fff; font-size: 12px;">
+          <span style="margin-right: 8px; font-size: 14px;">🚫</span>
           <span>Sem Anúncios</span>
         </div>
       </div>
     </div>
     
-    <!-- PLANO ANUAL (novo) -->
-    <div style="background: rgba(30, 30, 45, 0.9); border-radius: 20px; padding: 30px; margin: 0; text-align: center; border: 1px solid rgba(255,215,0,0.3); flex: 1; max-width: 280px; min-width: 260px;">
-      <div style="font-size: 50px; margin-bottom: 15px; text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);">👑</div>
-      <div style="font-size: 26px; font-weight: 800; margin-bottom: 8px; color: #FFD700;">RARO CAM Premium</div>
-      <div style="color: #8e8e93; margin-bottom: 20px; font-size: 14px;">Desbloqueie todo o potencial</div>
-      <div style="font-size: 42px; font-weight: 700; margin-bottom: 10px; color: #fff;">R$ 89,90<span style="font-size: 16px; color: #8e8e93; font-weight: 400;">/ano</span></div>
+    <!-- PLANO ANUAL -->
+    <div style="background: rgba(30, 30, 45, 0.9); border-radius: 20px; padding: 20px; margin: 0; text-align: center; border: 1px solid rgba(255,215,0,0.3); flex: 0 0 auto; width: 160px; min-width: 160px;">
+      <div style="font-size: 40px; margin-bottom: 10px; text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);">👑</div>
+      <div style="font-size: 18px; font-weight: 800; margin-bottom: 4px; color: #FFD700; line-height: 1.2;">RARO CAM<br>Premium</div>
+      <div style="color: #8e8e93; margin-bottom: 12px; font-size: 11px;">Desbloqueie todo o potencial</div>
+      <div style="font-size: 28px; font-weight: 700; margin-bottom: 6px; color: #fff;">R$ 89,90<span style="font-size: 12px; color: #8e8e93; font-weight: 400;">/ano</span></div>
       
       <!-- Banner 15 dias grátis -->
-      <div style="background: rgba(255, 215, 0, 0.15); border-radius: 10px; padding: 12px; margin-bottom: 25px; border: 1px solid rgba(255, 215, 0, 0.3);">
-        <div style="color: #FFD700; font-size: 14px; font-weight: 600;">✨ 15 dias grátis</div>
-        <div style="color: #FFD700; font-size: 13px; margin-top: 3px;">Após isso será cobrado!</div>
+      <div style="background: rgba(255, 215, 0, 0.15); border-radius: 8px; padding: 8px; margin-bottom: 15px; border: 1px solid rgba(255, 215, 0, 0.3);">
+        <div style="color: #FFD700; font-size: 11px; font-weight: 600;">✨ 15 dias grátis</div>
+        <div style="color: #FFD700; font-size: 10px; margin-top: 2px;">Após isso será cobrado!</div>
       </div>
       
-      <!-- Apenas 3 itens solicitados -->
-      <div style="text-align: left; padding: 0 10px;">
-        <div style="display: flex; align-items: center; margin-bottom: 16px; color: #fff; font-size: 16px;">
-          <span style="margin-right: 12px; font-size: 20px;">🎥</span>
+      <!-- Benefícios -->
+      <div style="text-align: left; padding: 0 5px;">
+        <div style="display: flex; align-items: center; margin-bottom: 10px; color: #fff; font-size: 12px;">
+          <span style="margin-right: 8px; font-size: 14px;">🎥</span>
           <span>Gravação em 4K 60fps</span>
         </div>
-        <div style="display: flex; align-items: center; margin-bottom: 16px; color: #fff; font-size: 16px;">
-          <span style="margin-right: 12px; font-size: 20px;">⏱️</span>
+        <div style="display: flex; align-items: center; margin-bottom: 10px; color: #fff; font-size: 12px;">
+          <span style="margin-right: 8px; font-size: 14px;">⏱️</span>
           <span>Buffer estendido (até 60s)</span>
         </div>
-        <div style="display: flex; align-items: center; color: #fff; font-size: 16px;">
-          <span style="margin-right: 12px; font-size: 20px;">🚫</span>
+        <div style="display: flex; align-items: center; color: #fff; font-size: 12px;">
+          <span style="margin-right: 8px; font-size: 14px;">🚫</span>
           <span>Sem Anúncios</span>
         </div>
       </div>
