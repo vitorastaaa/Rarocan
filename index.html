@@ -1172,6 +1172,22 @@ function subscribe() {
     alert('Redirecionando para pagamento do plano ' + planName);
     // Aqui você integra com a API de pagamento (Stripe, PayPal, etc.)
 }
+function restorePurchases() {
+    console.log('Restaurando compras...');
+    alert('Restaurando suas compras anteriores...');
+    // Aqui você integra com a API de restauração (StoreKit, RevenueCat, etc.)
+}
+
+function closeModal() {
+    console.log('Fechando modal...');
+    // Fecha o modal de assinatura
+    var modal = document.getElementById('subscriptionModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+    // Ou se usar outro método de fechar, adapte aqui
+    alert('Voltando...');
+}
             </script>
             <!-- Botões de ação -->
             <button class="subscription-btn" style="..." onclick="subscribe()">Assinar agora</button>
