@@ -1738,9 +1738,11 @@ let replayBuffer = [];
 async function initCamera() {
     try {
         const stream = await navigator.mediaDevices.getUserMedia({
-            video: true,
-            audio: true
-        });
+    video: {
+        facingMode: { exact: "environment" }  // ← Câmera traseira
+    },
+    audio: true
+});
 
         const video = document.createElement("video");
         video.srcObject = stream;
